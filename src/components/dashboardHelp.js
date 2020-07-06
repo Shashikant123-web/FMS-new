@@ -246,7 +246,6 @@ export class dashboardHelp extends Component {
             <br></br>
           </div>
           <br></br>
-          <br></br>
           <NavbarBottom />
         </div>
       </div>
