@@ -1,0 +1,44 @@
+.file {
+  background-image: url("../Images/file.png");
+  background-repeat: no-repeat;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+#hugewhite {
+  height: 45%;
+  width: 344px;
+  border-radius: 10px;
+  border: 1px solid #3fb2aa;
+  margin: 8px;
+}
+#fileimg {
+  width: 35px;
+  height: 35px;
+  margin-top: 5px;
+  /* margin-right: 10px; */
+  margin-left: 10px;
+}
+#doclogo {
+  margin-left: 147px;
+  width: 70px;
+}
+.uploadDoc {
+  margin-left: 103px;
+  color: darkgray;
+}
+#doc {
+  font-size: 14px;
+  font-weight: 700;
+  color: darkgray;
+  /* margin-top: 44px; */
+  position: relative;
+  top: 5px;
+  margin-left: 10px;
+}

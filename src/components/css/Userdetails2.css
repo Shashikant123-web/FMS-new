@@ -1,0 +1,164 @@
+html {
+  overflow: scroll;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+.form-group {
+  width: 100%;
+}
+
+.note {
+  text-align: center;
+  height: 80px;
+  color: #fff;
+  background: #fff;
+  font-weight: bold;
+  line-height: 80px;
+  margin-top: -65px;
+  /* border:1px solid brown; */
+  height: 125px;
+}
+.form-content {
+  font-family: lato;
+  background-color: #ffff;
+  padding: 5%;
+  /* border: 1px solid #ced4da; */
+  margin-bottom: 2%;
+  overflow-y: scroll;
+  margin-top: 0px;
+  height: 400px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+.form-control {
+  border-radius: 1.5rem;
+}
+.btnSubmit {
+  border: none;
+  border-radius: 1.5rem;
+  padding: 1%;
+  width: 20%;
+  cursor: pointer;
+  background: #0062cc;
+  color: #fff;
+}
+.form-control {
+  position: relative;
+  top: -15px;
+  z-index: 10;
+}
+#textarea {
+  margin-left: 0px;
+  margin-top: 16px;
+  margin-bottom: 0px;
+  height: 64px;
+  border: none;
+  border-bottom: 1px solid darkgray;
+  border-radius: 0px;
+}
+.profile-header-container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.profile-header-img {
+  padding: 54px;
+}
+
+.profile-header-img > img.img-circle {
+  width: 74px;
+  height: 74px;
+  border: 2px solid #51d2b7;
+  margin-top: -125px;
+  border-radius: 50px;
+}
+
+.profile-header {
+  margin-top: 43px;
+}
+.image_src {
+  background-image: url("../Images/camerapic.png");
+  background-repeat: no-repeat;
+  width: 0px;
+  height: -19px;
+  padding-right: 0px;
+  padding-left: 48px;
+  border-radius: 50px;
+  height: 48px;
+  border: none;
+  margin-top: 0px;
+  margin-left: 10px;
+}
+.rank-label-container {
+  margin-top: -109px;
+  margin-left: 61px;
+}
+#section-2 {
+  display: none;
+}
+#section-3 {
+  display: none;
+}
+#section-4 {
+  display: none;
+}
+#section-5 {
+  display: none;
+}
+#update {
+  margin-top: 11px;
+  float: left;
+  margin-left: 1px;
+  border: none;
+  border-bottom: 1px solid gray;
+  border-radius: 0px;
+}
+#multiselectpopup {
+  position: absolute;
+  z-index: 2;
+  width: 338px;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(187, 187, 187);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+  padding: 5px;
+  top: 120px;
+  left: 14.75px;
+}
+.checkbox {
+  margin-left: 25px;
+  /* position: absolute; */
+  top: -30px;
+  position: relative;
+}
+.title {
+  margin-left: 2px;
+  font-weight: 900;
+  color: black;
+}
+/* .popup-content {
+  position: absolute;
+  z-index: 2;
+  width: 294px;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(187, 187, 187);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px;
+  padding: 5px;
+  top: 170.1406px;
+  left: 15.75px;
+} */
+#printjobname {
+  position: relative;
+  border-bottom: 1px solid darkgray;
+  margin-top: 40px;
+}
+.container register-form {
+  margin-top: 42px;
+}
+.profile-header-container {
+  margin-top: 10px;
+}
+#formcontainer {
+  margin-top: -100px;
+}

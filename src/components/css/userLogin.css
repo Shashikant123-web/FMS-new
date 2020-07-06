@@ -1,0 +1,205 @@
+* {
+  font-family: "Lato";
+}
+/* #body {
+  background-image: url('../Images/Background.png');
+  background-position: fixed;
+  background-repeat: no-repeat; 
+   background-position: 100% 100%;
+} */
+#main1 {
+  width: 390px;
+  height: 480px;
+  background: white;
+  border-radius: 10px;
+  margin-top: 118px;
+  box-shadow: 0 20px 50px rgba(230, 219, 219, 0.733);
+  margin-left: 0px;
+}
+
+#forgot {
+  cursor: pointer;
+  color: lightseagreen;
+}
+#text {
+  margin-left: 90px;
+}
+#body {
+  position: relative;
+  margin-top: 190px;
+}
+#main1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#icon_prefix {
+  margin-top: -12px;
+  width: 242px;
+  margin-left: 43px;
+  font-size: 15px;
+  font-family: "Lato";
+  letter-spacing: 1px;
+  color: #707070;
+}
+
+#icon_prefix::placeholder {
+  font-size: 15px;
+}
+#input-type3 {
+  width: 288px;
+  outline: none;
+  font-weight: 500;
+}
+#input-forgot {
+  width: 288px;
+  outline: none;
+  margin-top: -23px;
+}
+#input-forgot-error {
+  margin-top: -54px;
+  margin-left: 38px;
+}
+
+#input-type4 {
+  text-decoration: none;
+  width: 288px;
+  margin-top: -4px;
+  outline: none;
+  border: none;
+}
+
+#iconn {
+  color: rgb(189, 180, 180);
+  margin-top: -4px;
+  font-size: 24px;
+}
+#frm {
+  margin-top: -23px;
+  margin-left: -5px;
+}
+#center {
+  margin-top: -12px;
+}
+#text {
+  color: gray;
+  margin-left: 2px;
+  margin-bottom: 30px;
+}
+#userloginHeading {
+  color: gray;
+  margin-right: -1px;
+  margin-bottom: 39px;
+}
+#otp {
+  color: gray;
+  margin-left: 85px;
+  margin: 20px auto;
+  margin-bottom: 15px;
+  margin-top: -4px;
+}
+#main2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 390px;
+  height: 350px;
+  background: white;
+  border-radius: 10px;
+  margin-top: 100px;
+  box-shadow: 0 20px 50px rgba(230, 219, 219, 0.733);
+}
+
+#UserLoginButton {
+  width: 288px;
+  margin-top: 6px;
+  outline: none;
+  border: none;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type="text"]:not(.browser-default):focus:not([readonly]),
+input[type="password"]:not(.browser-default):focus:not([readonly]),
+input[type="email"]:not(.browser-default):focus:not([readonly]),
+input[type="url"]:not(.browser-default):focus:not([readonly]),
+input[type="time"]:not(.browser-default):focus:not([readonly]),
+input[type="date"]:not(.browser-default):focus:not([readonly]),
+input[type="datetime"]:not(.browser-default):focus:not([readonly]),
+input[type="datetime-local"]:not(.browser-default):focus:not([readonly]),
+input[type="tel"]:not(.browser-default):focus:not([readonly]),
+input[type="number"]:not(.browser-default):focus:not([readonly]),
+input[type="search"]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid #26a69a;
+  -webkit-box-shadow: 0 1px 0 0 #26a69a;
+  box-shadow: none;
+}
+#userLogin1 {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+#FpVerify {
+  width: 288px;
+  outline: none;
+  margin-top: 17px;
+}
+#otpleftarrow {
+  margin-right: 271px;
+  color: #3fb2aa;
+  cursor: pointer;
+}
+i.right {
+  float: right;
+  margin-left: -21px;
+}
+.character-counter {
+  color: white;
+  margin-top: -100px;
+  position: fixed;
+  display: none;
+}
+@media only screen and (max-width: 625px) {
+  #main1,
+  #main2,
+  #main {
+    width: 340px;
+    margin-left: 2px;
+  }
+  #UserLoginButton {
+    width: 288px;
+    margin-top: -29px;
+    outline: none;
+    border: none;
+  }
+  #center {
+    margin-left: -23px;
+  }
+  #pre {
+    margin-top: 20px;
+    margin-right: -7px;
+  }
+}
+#eyesssss {
+  float: right;
+  position: relative;
+  top: -36px;
+  color: #707070;
+}
+/* #forgetpwds {
+  width: 27%;
+  position: relative;
+  top: -39px;
+  margin-left: 62px;
+} */
+.eyeInChangePwd {
+  color: grey;
+  cursor: pointer;
+  font-size: 17px;
+  position: absolute;
+  top: 8px;
+}

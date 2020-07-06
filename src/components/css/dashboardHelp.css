@@ -1,0 +1,90 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Lato";
+  box-sizing: border-box;
+}
+
+/* .row{
+    margin-top: 10px;
+} */
+
+/* .nav-wrapper .brand-logo img {
+    height: 47px;
+    width: 130px;
+    padding-left: 81px;
+} */
+
+.card .card-image img {
+  display: block;
+  border-radius: 2px 2px 0 0;
+  position: relative;
+  margin-top: 10%;
+  margin-left: 29%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 33%;
+}
+.card .card-content p {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-top: -16px;
+}
+
+#details {
+  margin-bottom: 50px;
+}
+nav ul li a {
+  color: #90a4ae;
+}
+
+#mail {
+  height: 80px;
+}
+#addresss {
+  background-color: #f9ffff;
+}
+#textcolor {
+  color: #7c7f7f;
+  font-family: lato;
+}
+#locicon {
+  color: #3fb2aa;
+}
+#collpsible {
+  padding: 0px;
+  width: 90%;
+  margin: 8px auto;
+}
+#coll {
+  margin-top: -34px;
+}
+/* #colli{
+    height: 389px;
+    width: 991px;
+  } */
+#imghelp {
+  margin-top: 10%;
+}
+#dashinput {
+  font-family: "Lato";
+  padding: 25px;
+  margin-top: 3px;
+  width: 97%;
+  margin-left: -16px;
+  border-radius: 1px;
+}
+#headinggg {
+  margin-left: 8px;
+  color: black;
+}
+.header {
+  margin-top: -27px;
+}
+.faqJobseeker {
+  border: 1px solid #dee2e6 !important;
+}

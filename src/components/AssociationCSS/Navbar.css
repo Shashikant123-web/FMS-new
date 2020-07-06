@@ -1,0 +1,46 @@
+
+.card {
+  
+    background-color: white;
+   
+}
+#block{
+    padding: 4px;
+    border-radius: 9px;
+    cursor: pointer;
+}
+#MianBlock{
+    margin: 10px;
+}
+/* #footer{
+    padding: 4px;
+    margin-top: 9px;
+    margin-left: -108px;
+} */
+.headingg{
+    margin-left: 10px;
+    color: black;
+}
+.assoEdit{
+    margin-top: -5px;
+}
+i.left {
+    float: left;
+    margin-right: -5px;
+}
+#navbtn1{
+    width: 139px;
+    text-decoration: none;
+    background: #3FB2AA;
+    color: white;
+    text-transform: initial;
+}
+.color{
+    color: aqua;
+}
+.btntext{
+    margin-top: 8px;
+}
+#assovendor{
+    padding: 13px;
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "question": "How to add members to the association?",
+    "ans": "After logging in to the application, go to Association Details Tab at the left hand side of the screen. Scroll down and you will find an option for the list of members. Expand the list of members, click on the add member, enter the member details, click on the save and then submit."
+  },
+  {
+    "id": 2,
+    "question": "How to check requests pending?",
+    "ans": "Login to the application, click on Work Done Tab and click on Requests pending option. You will find the list of requests that are pending"
+  },
+  {
+    "id": 3,
+    "question": "How to check the funds available with the association?",
+    "ans": "Login to the application, click on the Funds Tab and click on Available funds option. You will also be able to check the breakdown of the amount spent by the fund"
+  }
+]

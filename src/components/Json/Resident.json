@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "question": "How do I pay my outstanding rent?",
+    "ans": "Login to the application, click on Rent tab, click on Rent outstanding option and click on Pay. Residents can make the payment by debit card, credit card, net banking, PayTM and also Google Pay"
+  },
+  {
+    "id": 2,
+    "question": "How to check my tenancy details?",
+    "ans": "Login in the application, click on Tenancy tab, click on View tenancy details"
+  },
+  {
+    "id": 3,
+    "question": "How to schedule a housekeeping service?",
+    "ans": "Login to the application, click on Facility request tab, click on Housekeeping and then click on schedule. Fill in the time and date and submit the request. The request will be addressed within 2 hours"
+  },
+  {
+    "id": 4,
+    "question": "How to upload KYC documents?",
+    "ans": "Login to the application, go to My profile, scroll down and click on Complete KYC. Upload the required documents and submit it"
+  }
+]

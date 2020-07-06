@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "question": "How to check my associate’s ratings?",
+    "ans": "Login to the application, click on the dropdown next to List of Associates in the My Associates Tab and click on my Associate’s review and rating."
+  },
+  {
+    "id": 2,
+    "question": "How to track the timesheet of my associates?",
+    "ans": " Login to the application, click on the dropdown next to list of associates in the My Associates Tab and click on Timesheet updates."
+  },
+  {
+    "id": 3,
+    "question": "How do I check new job requirements?",
+    "ans": "Login to the application, click on New Job updates option under All Jobs Tab."
+  },
+  {
+    "id": 4,
+    "question": "How to check requests raised my associates?",
+    "ans": "Login to the application, under the Concerns and Grievances tab, click Associate's requests."
+  },
+  {
+    "id": 5,
+    "question": "How do I upload training videos?",
+    "ans": "After logging in to the application, go to Education and Recreation Tab. Click on videos and then click on upload video. The video should not be more than 10 MB."
+  }
+]

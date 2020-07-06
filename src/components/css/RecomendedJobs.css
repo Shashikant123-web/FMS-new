@@ -1,0 +1,137 @@
+i.left {
+  cursor: pointer;
+  margin-right: 0px;
+}
+#savebtn,
+#applybtn {
+  width: 130px;
+  border-radius: 7px;
+  text-transform: inherit;
+}
+#savebtn {
+  border: 1px teal;
+  color: teal;
+  text-transform: inherit;
+  border-style: double;
+  margin-right: 10px;
+}
+#applybtn {
+  background: teal;
+  color: white;
+}
+.recomendedJobs {
+  cursor: pointer;
+}
+#marginLeft {
+  margin-left: 20px;
+}
+.card .card-content {
+  padding: 12px;
+  border-radius: 0 0 2px 2px;
+}
+#recomendedJobsMainDashboard {
+  border-top: 14px solid white;
+  border-radius: 10px;
+}
+#recomendedJobsMain {
+  border-top: 14px solid rgba(199, 192, 192, 0.2);
+  border-radius: 10px;
+}
+#recomendedJobsMain:hover {
+  border-top: 14px solid teal;
+}
+#recomendedJobsMainDashboard:hover {
+  border-top: 14px solid teal;
+}
+.card .card-action {
+  padding: 7px 24px;
+}
+.mainContainer {
+  margin-top: -51px;
+}
+#showOnSmall {
+  font-size: 17px;
+  margin-left: 20px;
+}
+#smallScreen {
+  margin-left: 3px;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  position: fixed;
+  z-index: -1;
+  margin-left: 40px;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.popup-overlay {
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+
+  display: flex;
+}
+.rightIcon {
+  margin-right: 4px;
+  margin-top: -2px;
+}
+.popup-overlay {
+  z-index: -1;
+}
+#saveHide {
+  font-size: 19px;
+  margin-top: 2px;
+  margin-left: 7px;
+  margin-right: 2px;
+}
+#homeIcon {
+  font-size: 20px;
+  margin-right: 4px;
+}
+@media screen and (min-width: 1200px) {
+  .modal-content {
+    position: fixed;
+    z-index: -1;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    margin-left: 135px;
+    margin-top: 10px;
+    height: 200%;
+  }
+}

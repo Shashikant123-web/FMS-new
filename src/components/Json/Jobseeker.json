@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "question": "Is there a Cost for the Service?",
+    "ans": "No, there is no cost for the service. It is free of charge."
+  },
+  {
+    "id": 2,
+    "question": "How do I apply for a position?",
+    "ans": "To apply for a position, you will have to login to the application using your credentials. Once you login, under the Job requirement tab, you will find jobs listed. Click on the job description/job title, check for the eligibility and click on Apply."
+  },
+  {
+    "id": 3,
+    "question": "What are the next steps after I apply for a position?",
+    "ans": "The next step is to wait for the response from the team. Make sure that you have entered correct email address for the team to respond to your application. You can check the status of your application under the Jobs tab and click on Check Updates."
+  },
+  {
+    "id": 4,
+    "question": "How should I prepare for my Interview?",
+    "ans": "Based on the job description provided to you, and based on the roles and responsibilities for the particular post, we would recommend you to go through a few video based contents in our application and get yourself prepared for the interview."
+  },
+  {
+    "id": 5,
+    "question": "How to edit my information in the portal?",
+    "ans": "Login to the application, go to My Details tab, search for the details to be edited, click on edit, make changes and click on save"
+  }
+]
