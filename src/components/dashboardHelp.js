@@ -16,6 +16,7 @@ export class dashboardHelp extends Component {
     userId: "",
     text: "",
   };
+
   componentDidMount() {
     document.addEventListener("DOMContentLoaded", function() {
       var elems = document.querySelectorAll(".collapsible");
