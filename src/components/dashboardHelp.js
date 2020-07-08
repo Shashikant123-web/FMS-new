@@ -162,7 +162,7 @@ export class dashboardHelp extends Component {
                 >
                   <p className="mb-0">
                     {jobseker[0].question}
-                    <i className="material-icons right">arrow_drop_down</i>
+                    <i className="material-icons right">keyboard_arrow_down</i>
                   </p>
                 </div>
                 <div id="collapseOne" className="collapse">
@@ -180,7 +180,7 @@ export class dashboardHelp extends Component {
                 >
                   <p className="mb-0">
                     {jobseker[1].question}
-                    <i className="material-icons right">arrow_drop_down</i>
+                    <i className="material-icons right">keyboard_arrow_down</i>
                   </p>
                 </div>
                 <div id="collapseTwo" className="collapse">
@@ -198,7 +198,7 @@ export class dashboardHelp extends Component {
                 >
                   <p className="mb-0">
                     {jobseker[2].question}
-                    <i className="material-icons right">arrow_drop_down</i>
+                    <i className="material-icons right">keyboard_arrow_down</i>
                   </p>
                 </div>
                 <div id="collapseThree" className="collapse">
@@ -216,7 +216,7 @@ export class dashboardHelp extends Component {
                 >
                   <p className="mb-0">
                     {jobseker[3].question}
-                    <i className="material-icons right">arrow_drop_down</i>
+                    <i className="material-icons right">keyboard_arrow_down</i>
                   </p>
                 </div>
                 <div id="collapseFour" className="collapse">
@@ -234,7 +234,7 @@ export class dashboardHelp extends Component {
                 >
                   <p className="mb-0">
                     {jobseker[4].question}
-                    <i className="material-icons right">arrow_drop_down</i>
+                    <i className="material-icons right">keyboard_arrow_down</i>
                   </p>
                 </div>
                 <div id="collapseFive" className="collapse">

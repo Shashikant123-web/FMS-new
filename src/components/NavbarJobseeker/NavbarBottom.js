@@ -7,20 +7,43 @@ import mail from "../Images/mailHelp.png";
 
 class NavbarBottom extends Component {
   state = {
-    curTime: new Date().toLocaleTimeString(),
+    myDate: new Date(),
     data: "",
   };
-
   // callMe() {
-  //   console.log(this.state.curTime.slice(0, 2));
   //   setInterval(() => {
-  //     this.setState({
-  //       curTime: new Date().toLocaleString(),
-  //     });
-  //   }, 10000000000000000);
-  // }
+  //     console.log("yeehh");
+  //     var { myDate } = this.state;
+  //     var myDate = new Date();
+  //     var hrs = myDate.getHours();
+
+  //     var greet;
+
+  //     if (hrs >= 9 && hrs <= 19)
+  //       this.setState({
+  //         data: "  Good morning, We'll be there at 9am, See you then!",
+  //       });
+  //     else if (hrs >= 12 && hrs <= 17) greet = "its office time";
+  //     else if (hrs >= 22 && hrs <= 6)
+  //       this.setState({
+  //         data:
+  //           "So we are still sleeping. We'll be there at 9am, See you then!",
+  //       });
+  //   }, 60000);
+  //}
   render() {
-    var { curTime, data } = this.state;
+    var { myDate } = this.state;
+
+    // var myDate = new Date();
+    // var hrs = myDate.getHours();
+
+    // var greet;
+
+    // if (hrs >= 9 && hrs <= 19)
+    //   greet = "  Good morning, We will be there at 9am, See you then!";
+    // else if (hrs >= 12 && hrs <= 17) greet = "its office time";
+    // else if (hrs >= 17 && hrs <= 24) greet = "Sleep time";
+    // var { curTime, data } = this.state;
     return (
       <div>
         <br></br>
@@ -46,9 +69,9 @@ class NavbarBottom extends Component {
                   height="25"
                 ></img>
                 <p id="textcolor">
-                  send us an email-
+                  Send us an email-
                   <u className="blue-text" style={{ cursor: "pointer" }}>
-                    info@stskfecilities.com
+                    support@stskfacilities.com
                   </u>
                 </p>
               </div>
@@ -79,9 +102,8 @@ class NavbarBottom extends Component {
 
             <br></br>
             <div className="container border" style={{ padding: "0px" }}>
-              <div className="card-body">
-                System info: {curTime}
-                {data}
+              <div className="card-body center">
+                <strong className="black-text"> System info: its</strong>
               </div>
             </div>
           </div>
@@ -143,3 +165,8 @@ class NavbarBottom extends Component {
 
 export default NavbarBottom;
 //{this.callMe()}
+
+// <strong className="grey-text">
+// {myDate.toLocaleTimeString()},{this.state.data}
+// {this.callMe()}
+// </strong>

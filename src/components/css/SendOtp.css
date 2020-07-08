@@ -243,7 +243,7 @@ button:enabled {
   }
 } */
 
-/* mobile display */
+/* desktop display */
 @media only screen and (min-width: 626px) {
   body {
     background: url("../Images/Background.png");
@@ -251,7 +251,7 @@ button:enabled {
     background-size: cover;
   }
 }
-/* desktop display */
+/*  mobile display */
 @media only screen and (max-width: 625px) {
   body {
     background: url("../Images/Background2.png");

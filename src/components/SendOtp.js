@@ -50,7 +50,7 @@ class SendOtp extends Component {
       countryCode: e.target.value,
     });
 
-    if (e.target.value.length == 100) {
+    if (e.target.value.length === 100) {
       this.setState({
         disabled: false,
       });
@@ -84,7 +84,6 @@ class SendOtp extends Component {
     const { loading } = this.state;
     const countries = require("./countryphonecode.json");
     // console.log(this.state);
-    console.log(this.props.sendOtp);
     return (
       <div id="body">
         <div className="row center" id="main1">

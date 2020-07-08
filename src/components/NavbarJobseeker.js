@@ -26,9 +26,6 @@ class NavbarJobseeker extends Component {
                   id="home"
                   to={{
                     pathname: "/dashboard",
-                    state: {
-                      mobileNumber: this.state,
-                    },
                   }}
                 >
                   Home
