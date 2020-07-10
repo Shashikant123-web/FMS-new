@@ -71,7 +71,13 @@ class NavbarBottom extends Component {
                 <p id="textcolor">
                   Send us an email-
                   <u className="blue-text" style={{ cursor: "pointer" }}>
+                    <a
+                      href="mailto:
                     support@stskfacilities.com
+                    "
+                    >
+                      support@stskfacilities.com
+                    </a>
                   </u>
                 </p>
               </div>
@@ -89,7 +95,7 @@ class NavbarBottom extends Component {
                     className="blue-text hide-on-small-only"
                     style={{ cursor: "pointer" }}
                   >
-                    1800-121-0786
+                    <a href="tel:1800-121-0786">1800-121-0786</a>
                   </u>
                   <span className="show-on-small hide-on-med-and-up">
                     <u className="blue-text" style={{ cursor: "pointer" }}>
