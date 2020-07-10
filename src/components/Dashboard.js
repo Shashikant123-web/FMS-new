@@ -89,16 +89,23 @@ class Dashboard extends Component {
     };
   }
   componentDidMount(e) {
-    axios
-      .get("/stskFmsApi/jobTypes/getAllJobTypes", { headers: header })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data.data[0].name);
-        this.setState({
-          items: res.data.data,
-        });
-      })
-      .catch((err) => console.log(err));
+    if (this.props.token.SendOtp.token !== true) {
+      return <Redirect to="/userLogin" />;
+    } else {
+      this.setState({
+        userId: this.props.dashboard.payLoad.details.id,
+      });
+      axios
+        .get("/stskFmsApi/jobTypes/getAllJobTypes", { headers: header })
+        .then((res) => {
+          console.log(res);
+          console.log(res.data.data[0].name);
+          this.setState({
+            items: res.data.data,
+          });
+        })
+        .catch((err) => console.log(err));
+    }
   }
   handlejobtypes() {}
   handleRadioEdit(e) {
@@ -182,7 +189,7 @@ class Dashboard extends Component {
 
   handleSearchInput = (e) => {
     this.setState({
-      searchInput: e.target.value,
+      text: e.target.value,
     });
   };
 
@@ -372,7 +379,7 @@ class Dashboard extends Component {
   };
   handleSearch = (e) => {
     e.preventDefault();
-    this.props.handleSearch(this.state.searchInput);
+    this.props.handleSearch(this.state);
     this.props.history.push("/searchedJobs");
     // axios
     //   .get("/stskFmsApi/jobs/getByJobName/" + this.state.text, {
@@ -893,7 +900,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleSearch: (value) => dispatch(handleSearch(value)),
+    handleSearch: (id) => dispatch(handleSearch(id)),
   };
 };
 export default connect(

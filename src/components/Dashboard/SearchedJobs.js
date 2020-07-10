@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import "../css/RecomendedJobs.css";
-import mainLogo from "../Images/Mainlogo.png";
 import dashboard from "../Images/dashboard.png";
 import { withRouter, Redirect } from "react-router-dom";
 import Popup from "reactjs-popup";
-import axios from "axios";
 import rightMark from "../Images/tic.png";
-import M from "materialize-css/dist/js/materialize.min.js";
 import { connect } from "react-redux";
 import NavbarTop from "../NavbarJobseeker/NavbarTop";
 import EditProfile from "../Editprofile";
@@ -27,44 +24,30 @@ export class SearchedJobs extends Component {
   state = {
     showPopup: false,
     id: "",
-    userId: "",
+    userId: this.props.dashboard.payLoad.userId,
     userInput: "",
     searchedjobdetails: "",
-    text: "",
+    text: this.props.text.SendOtp.text,
+    searchInput: "",
   };
   handleSearchInput = (e) => {
     this.setState({
-      searchInput: e.target.value,
+      text: e.target.value,
     });
   };
   handleSearch = (e) => {
     e.preventDefault();
-    this.props.handleSearch(this.state.searchInput);
+    this.props.handleSearch(this.state);
     this.props.history.push("/searchedJobs");
   };
 
-  componentDidMount() {
-    if (this.props.token.SendOtp.token !== true) {
-      return <Redirect to="/userLogin" />;
-    } else {
-      this.setState({
-        userId: this.props.dashboard.payLoad.userId,
-      });
-    }
-  }
   handleHide = (id) => {
-    console.log(id);
-
     this.props.hideJobs(id);
   };
   handleSave = (id) => {
-    console.log("shashi");
     this.setState({
       id,
     });
-    // this.props.handleSave({ id }, { userId: 12 });
-    // this.props.handleSave(this.state);
-
     const time = setTimeout(() => {
       this.props.handleSave(this.state);
     }, 50);
@@ -92,46 +75,12 @@ export class SearchedJobs extends Component {
     var popup = document.getElementById("popupopen");
     popup.classList.toggle("show");
   }
-  //handleSave = (id) => {
-  // axios
-  //   .post(
-  //     "/stskFmsApi/jobseeker/saveJobs",
-  //     {
-  //       id: 27,
-  //       jobs: [
-  //         {
-  //           id: id,
-  //         }
-  //       ]
-  //     },
-  //     { headers: header }
-  //   )
-  //   .then((res) => {
-  //     console.log(res.data);
-  //     console.log(res);
-  //   });
-  // {
-  //   this.state.saved.map((savedId) => {
-  //     var flag = document.getElementById(id).innerHTML;
-
-  //     if (flag === "turned_in_not" && id == savedId) {
-  //       var a = (document.getElementById(id).innerHTML = "turned_in");
-  //       flag = 1;
-  //     } else {
-  //       var a = (document.getElementById(id).innerHTML = "turned_in_not");
-  //     }
-  //   });
-  // }
-  //   console.log(id);
-  //   this.setState({
-  //     saved: [...this.state.saved, id],
-  //   });
-  // };
 
   render() {
     if (this.props.token.SendOtp.token !== true) {
       return <Redirect to="/userLogin" />;
     }
+
     const { searchedJobs } = this.props.searchedJobs.SendOtp;
     const {
       payLoad: { userId },
@@ -139,7 +88,6 @@ export class SearchedJobs extends Component {
       savedJobs,
       appliedJobs,
     } = this.props.dashboard;
-    console.log(searchedJobs);
     var nmbr = searchedJobs && searchedJobs.length;
     const searchedjobList =
       searchedJobs && searchedJobs.length ? (
@@ -660,6 +608,7 @@ const mapStateToProps = (state) => {
   return {
     dashboard: state.userLogin.userLogin,
     token: state,
+    text: state,
     searchedJobs: state,
   };
 };

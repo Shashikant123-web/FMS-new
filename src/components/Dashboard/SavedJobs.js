@@ -28,12 +28,12 @@ export class SavedJobs extends Component {
   };
   handleSearchInput = (e) => {
     this.setState({
-      searchInput: e.target.value,
+      text: e.target.value,
     });
   };
   handleSearch = (e) => {
     e.preventDefault();
-    this.props.handleSearch(this.state.searchInput);
+    this.props.handleSearch(this.state);
     this.props.history.push("/searchedJobs");
   };
 
@@ -420,7 +420,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleUnsave: (id) => dispatch(handleUnsave(id)),
     handleApply: (id) => dispatch(handleApply(id)),
-    handleSearch: (value) => dispatch(handleSearch(value)),
+    handleSearch: (id) => dispatch(handleSearch(id)),
 
     // hideJobs: (id) => dispatch({ type: HIDE_JOBS, id: id }),
   };

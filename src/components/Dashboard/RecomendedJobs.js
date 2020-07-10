@@ -35,12 +35,12 @@ export class RecomendedJobs extends Component {
 
   handleSearchInput = (e) => {
     this.setState({
-      searchInput: e.target.value,
+      text: e.target.value,
     });
   };
   handleSearch = (e) => {
     e.preventDefault();
-    this.props.handleSearch(this.state.searchInput);
+    this.props.handleSearch(this.state);
     this.props.history.push("/searchedJobs");
   };
 

@@ -31,12 +31,12 @@ export class newJobs extends Component {
   };
   handleSearchInput = (e) => {
     this.setState({
-      searchInput: e.target.value,
+      text: e.target.value,
     });
   };
   handleSearch = (e) => {
     e.preventDefault();
-    this.props.handleSearch(this.state.searchInput);
+    this.props.handleSearch(this.state);
     this.props.history.push("/searchedJobs");
   };
 
@@ -82,8 +82,6 @@ export class newJobs extends Component {
     if (this.props.token.SendOtp.token !== true) {
       return <Redirect to="/userLogin" />;
     }
-    console.log(this.props.dashboard.payLoad.details.id);
-    console.log(this.state);
     const {
       payLoad: { userId },
       recomendedJobs,

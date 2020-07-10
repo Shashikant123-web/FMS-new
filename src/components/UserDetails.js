@@ -298,7 +298,6 @@ class UserDetails extends Component {
   };
 
   handleSubmit = (e) => {
-    alert("hi");
     e.preventDefault();
     console.log(this.state);
 

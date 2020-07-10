@@ -15,6 +15,7 @@ import {
 
 const intialState = {
   token: false,
+  text: "",
   searchedJobs: [],
   SendOtp: {
     countryCode: "91",
@@ -147,6 +148,7 @@ const sendotpReducer = (state = intialState, action) => {
     case SEARCHED_JOBS:
       return {
         ...state,
+        text: action.text,
         searchedJobs: action.payLoad,
       };
   }

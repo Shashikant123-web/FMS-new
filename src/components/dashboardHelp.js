@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./css/dashboardHelp.css";
 import dashboard from "./Images/dashboard.png";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import M from "materialize-css/dist/js/materialize.min.js";
 import "materialize-css/dist/js/materialize.min.js";
 import NavbarJobseeker from "../components/NavbarJobseeker";
@@ -18,24 +18,29 @@ export class dashboardHelp extends Component {
   };
 
   componentDidMount() {
-    document.addEventListener("DOMContentLoaded", function() {
-      var elems = document.querySelectorAll(".collapsible");
-      var instances = M.Collapsible.init(elems, {});
-    });
+    if (this.props.token.SendOtp.token !== true) {
+      return <Redirect to="/userLogin" />;
+    } else {
+      this.setState({
+        userId: this.props.dashboard.payLoad.details.id,
+      });
+    }
   }
   handleSearchInput = (e) => {
     this.setState({
-      searchInput: e.target.value,
+      text: e.target.value,
     });
   };
   handleSearch = (e) => {
     e.preventDefault();
-    this.props.handleSearch(this.state.searchInput);
+    this.props.handleSearch(this.state);
     this.props.history.push("/searchedJobs");
   };
 
   render() {
-    console.log(this.state);
+    if (this.props.token.SendOtp.token !== true) {
+      return <Redirect to="/userLogin" />;
+    }
     const jobseker = require("./Json/Jobseeker.json");
 
     // const jobseekerList = jobseker.length
@@ -64,7 +69,6 @@ export class dashboardHelp extends Component {
     //       );
     //     })
     //   : null;
-    console.log(jobseker);
     return (
       <div id="back">
         <div>
@@ -252,11 +256,20 @@ export class dashboardHelp extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    dashboard: state.userLogin.userLogin,
+    token: state,
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     hideJobs: (id) => dispatch({ type: HIDE_JOBS, id: id }),
-    handleSearch: (value) => dispatch(handleSearch(value)),
+    handleSearch: (id) => dispatch(handleSearch(id)),
   };
 };
 
-export default connect(null, mapDispatchToProps)(withRouter(dashboardHelp));
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(dashboardHelp));
