@@ -11,14 +11,14 @@ html {
 
 .note {
   text-align: center;
-  height: 80px;
+
   color: #fff;
   background: #fff;
   font-weight: bold;
   line-height: 80px;
   margin-top: -65px;
   /* border:1px solid brown; */
-  height: 125px;
+  height: 260px;
 }
 .form-content {
   font-family: lato;
@@ -28,7 +28,7 @@ html {
   margin-bottom: 2%;
   overflow-y: scroll;
   margin-top: 0px;
-  height: 400px;
+  height: 350px;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
@@ -65,14 +65,20 @@ html {
 
 .profile-header-img {
   padding: 54px;
+  margin-top: 50px;
 }
 
 .profile-header-img > img.img-circle {
-  width: 74px;
-  height: 74px;
+  background-image: url("../Images/Group 281.png");
+  width: 100px;
+  height: 100px;
   border: 2px solid #51d2b7;
   margin-top: -125px;
   border-radius: 50px;
+  text-indent: -9999px;
+  color: transparent !important;
+  -webkit-appearance: none !important;
+  background-repeat: no-repeat;
 }
 
 .profile-header {
@@ -135,7 +141,12 @@ html {
 .title {
   margin-left: 2px;
   font-weight: 900;
-  color: black;
+
+  position: relative;
+  top: 19px;
+  color: darkgrey;
+  letter-spacing: 2px;
+  font-size: 21px;
 }
 /* .popup-content {
   position: absolute;
@@ -161,4 +172,8 @@ html {
 }
 #formcontainer {
   margin-top: -100px;
+}
+#pro1 {
+  height: 50px;
+  height: 50px;
 }

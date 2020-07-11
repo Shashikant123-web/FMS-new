@@ -105,7 +105,11 @@ class UserDetails extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentDidMount() {
+  componentWillMount() {
+    // this.setState({
+    //   mob: this.props.location.state.mobileNumber.mobileNumber,
+    //   mobileNumber: this.props.location.state.mobileNumber.mobileNumber,
+    // });
     fetch("http://stskfacilities.com:8081/stskFmsApi/jobTypes/getAllJobTypes", {
       headers: header,
     })
@@ -128,6 +132,8 @@ class UserDetails extends Component {
       .catch((error) => {
         console.log(error);
       });
+  }
+  componentDidMount() {
     axios
       .get(
         "/stskFmsApi/userLogin/getByMob/" + this.props.details.mobileNumber,
@@ -416,14 +422,19 @@ class UserDetails extends Component {
           <div class="note">
             <div class="profile-header-container">
               <h4 class="title">Job Seeker</h4>
+
               <div class="profile-header-img">
                 <img
                   class="img-circle"
+                  style={{}}
                   //src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120"
                   src={this.state.profileimagepath}
-                  onerror="this.style.display='none'"
                 />
+
                 <div class="rank-label-container">
+                  {/* <i className="material-icons grey-text large" id="pro1">
+                    account_circle
+                  </i> */}
                   <input
                     type="file"
                     name="image"
@@ -854,11 +865,12 @@ class UserDetails extends Component {
                 </label>
                 <p className="center red-text">{this.state.checkBoxerror}</p>
                 {/* <div className="createAccount2"> */}
-                <button type="submit" onClick={this.handleSubmit}>
-                  Submit
-                </button>
+
                 {/* </div> */}
               </div>
+              <button type="submit" onClick={this.handleSubmit}>
+                Submit
+              </button>
             </div>
             {/* </form> */}
             {/* <button type="button"  onSubmit={this.handleSubmit}>Submit</button> */}

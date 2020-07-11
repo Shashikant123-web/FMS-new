@@ -84,9 +84,9 @@ class Editprofile extends Component {
         .then((res) => {
           console.log(res.data.data);
 
-          console.log(res.data.data.userLogin.id);
+          // console.log(res.data.data.userLogin.id);
           this.setState({
-            userId: res.data.data.id,
+            // userId: res.data.data.id,
             details: res.data.data,
             // editProfile: res.data.data,
             // userLoginMobile: res.data.data.mob,
@@ -138,7 +138,7 @@ class Editprofile extends Component {
           });
         })
         .catch((err) => console.log(err));
-    }, 7000);
+    }, 50);
     const timer6 = setTimeout(() => {
       axios
         .get(
@@ -153,11 +153,9 @@ class Editprofile extends Component {
           });
         })
         .catch((err) => console.log(err));
-    }, 8000);
+    }, 500);
   }
-  handleCancel = () => {
-    // document.getElementById("mydiv").style.display = "none";
-  };
+
   handleResume = (e) => {
     e.preventDefault();
 
@@ -230,44 +228,98 @@ class Editprofile extends Component {
   handleImageUpdate = (e) => {
     // console.log(e.target.files[0]);
     // console.log(e.target.files[0].name);
+    if (this.state.profileimageretrievedocId === "null") {
+      const timer15 = setTimeout(() => {
+        let formData = new FormData();
 
-    const timer10 = setTimeout(() => {
-      let formData = new FormData();
+        formData.append("file", this.state.createeditprofileimage);
+        axios
+          .post(
+            "/stskFmsApi/imageDoc/createDoc/" + this.state.userId,
+            formData,
+            {
+              headers: {
+                "x-api-key":
+                  " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res);
+            console.log(res.data);
+            this.setState({
+              createeditprofileimagedocId: res.data.data,
+            });
+          })
+          .catch((err) => console.log(err));
+      }, 4000);
+    } else {
+      const timer10 = setTimeout(() => {
+        let formData = new FormData();
 
-      formData.append("file", this.state.createeditprofileimage);
-      axios
-        .post("/stskFmsApi/imageDoc/createDoc/" + this.state.userId, formData, {
-          headers: {
-            "x-api-key":
-              " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
-          },
-        })
-        .then((res) => {
-          console.log(res);
-          console.log(res.data);
-          this.setState({
-            createeditprofileimagedocId: res.data.data,
-          });
-        })
-        .catch((err) => console.log(err));
-    }, 4000);
+        formData.append("file", this.state.editprofileimage);
+        axios
+          .post(
+            "/stskFmsApi/imageDoc/EditDoc/" +
+              this.state.profileimageretrievedocId,
+            formData,
+            {
+              headers: {
+                "x-api-key":
+                  " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res.data.data.path);
+            console.log(res.data);
+            this.setState({
+              profileimagepath: res.data.data.path,
+            });
+          })
+          .catch((err) => console.log(err));
+      }, 4000);
+    }
+
+    // const timer10 = setTimeout(() => {
+    //   let formData = new FormData();
+
+    //   formData.append("file", this.state.createeditprofileimage);
+    //   axios
+    //     .post("/stskFmsApi/imageDoc/createDoc/" + this.state.userId, formData, {
+    //       headers: {
+    //         "x-api-key":
+    //           " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
+    //       },
+    //     })
+    //     .then((res) => {
+    //       console.log(res);
+    //       console.log(res.data);
+    //       this.setState({
+    //         createeditprofileimagedocId: res.data.data,
+    //       });
+    //     })
+    //     .catch((err) => console.log(err));
+    // }, 4000);
     // retrieving the profile image
-    const timer11 = setTimeout(() => {
-      axios
-        .get(
-          "/stskFmsApi/imageDoc/retriveWithPath/" +
-            this.state.createeditprofileimagedocId,
-          { headers: header }
-        )
-        .then((res) => {
-          console.log(res);
-          this.setState({
-            createeditprofileimagepath: res.data.data.path,
-          });
-        })
-        .catch((err) => console.log(err));
-    }, 5000);
+    // const timer11 = setTimeout(() => {
+    //   axios
+    //     .get(
+    //       "/stskFmsApi/imageDoc/retriveWithPath/" +
+    //         this.state.createeditprofileimagedocId,
+    //       { headers: header }
+    //     )
+    //     .then((res) => {
+    //       console.log(res);
+    //       this.setState({
+    //         createeditprofileimagepath: res.data.data.path,
+    //       });
+    //     })
+    //     .catch((err) => console.log(err));
+    // }, 5000);
   };
+  // retrieving the profile image
+
   handleRadio = (e) => {
     console.log(e.target.value);
 
@@ -332,6 +384,28 @@ class Editprofile extends Component {
       noticePeriod: e.target.value,
     });
   };
+  handleImageDelete = (e) => {
+    axios
+      .delete(
+        "/stskFmsApi/imageDoc/deleteDoc/" +
+          this.state.profileimageretrievedocId,
+
+        {
+          headers: {
+            "x-api-key":
+              " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data.data.path);
+        console.log(res.data);
+        this.setState({
+          profileimagepath: res.data.data.path,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
   handleSubmit = (e) => {
     console.log("submit");
     const {
@@ -354,8 +428,9 @@ class Editprofile extends Component {
       negotiable,
       upTo,
       jobLocation,
-    } = this.state.editProfile;
+    } = this.props.editProfile.payLoad;
     console.log(name);
+
     e.preventDefault();
     if (this.state.check === true) {
       axios
@@ -385,7 +460,6 @@ class Editprofile extends Component {
             userLogin: {
               id: this.state.userLogin,
             },
-            //jobTypes: this.state.editProfile.editprofile.jobTypes,
           },
           { headers: header }
         )
@@ -462,48 +536,52 @@ class Editprofile extends Component {
       prevjobLocation,
       upTo,
       working,
+      jobTypes,
     } = this.props.editProfile.payLoad.details;
     console.log(name);
-    // console.log(this.state.editProfile.userLogin.id)
-    // console.log(this.state.editProfile.userLogin.id)
-    return (
-      <div class="container register-form" id="mydiv">
-        <div class="forms z-depth-1">
-          <div class="note">
-            <div class="profile-header-container align-self-center">
-              {/* <h4 class="title">Job Seeker</h4>  */}
-              <div class="profile-header-img">
-                <center>
-                  <img
-                    class="img-circle"
-                    //src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120"
-                    // src={this.state.createeditprofileimagepath}
-                    src={this.state.profileimagepath}
-                  />
-                  {/* <i class="large material-icons teal">account_circle</i> */}
+    console.log(jobUpdate);
 
-                  <div class="rank-label-container">
-                    <input
-                      type="file"
-                      name="image"
-                      class="image_src"
-                      id="proimage"
-                      accept="images.jpeg"
-                      onChange={this.handleImageChange}
-                    />
-                  </div>
-                  {/* <Button class="button button1">Green</Button>
-                  <Button class="button button2">Blue</Button> */}
+    var i = jobTypes.length;
+    var jobnamearray = [];
+    for (var j = 0; j <= i - 1; j++) {
+      var jobname = jobnamearray.push(jobTypes[j]["name"]);
+    }
+    return (
+      <div className="container register-form" id="mydiv">
+        <div className="forms z-depth-1">
+          <div className="note1">
+            <div className="profile-header-container align-self-center">
+              <h4 className="title">Edit Profile</h4>
+              <div className="profile-header-img">
+                <img
+                  className="img-circle"
+                  style={{}}
+                  src={this.state.profileimagepath}
+                />
+                <div className="rank-label-container">
+                  <input
+                    type="file"
+                    name="image"
+                    className="image_src"
+                    accept="images.jpeg"
+                    onChange={this.handleImageChange}
+                  />
+                </div>
+                <center>
                   <div className="button">
                     <a
-                      class="btn"
-                      id="btn"
+                      className="waves-effect waves-light btn-small"
+                      style={{ margin: "10px" }}
                       onClick={this.handleImageUpdate}
-                      style={{ color: "black" }}
                     >
-                      Update Image
+                      Edit
                     </a>
-                    <a class="btn red" onClick={this.handleImageRemove}>
+                    <a
+                      className="waves-effect waves-light btn-small"
+                      id="remove"
+                      style={{ backgroundColor: "red" }}
+                      onClick={this.handleImageDelete}
+                    >
                       Remove
                     </a>
                   </div>
@@ -512,13 +590,13 @@ class Editprofile extends Component {
             </div>
           </div>
 
-          <div class="form-content">
-            <div class="row" id="section-1">
-              <div class="col-md-6">
-                <div class="form-group">
+          <div className="form-content1">
+            <div className="row" id="section-1">
+              <div className="col-md-6">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Enter Full Name *"
                     name="name"
                     required
@@ -528,10 +606,10 @@ class Editprofile extends Component {
                     defaultValue={name}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Enter Email *"
                     type="email"
                     name="email"
@@ -542,10 +620,10 @@ class Editprofile extends Component {
                     defaultValue={email}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Pan Number *"
                     type="text"
                     name="panNum"
@@ -556,18 +634,25 @@ class Editprofile extends Component {
                     defaultValue={panNum}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <Popup
-                    contentStyle={{ width: "418px", left: "35.125px" }}
+                    contentStyle={{
+                      width: "418px",
+                      left: "35.125px",
+                      height: "193px",
+                    }}
                     trigger={
                       <div
-                        class="form-group"
+                        className="form-group"
                         id="printjobname"
                         onChange={this.handleCheckLength}
                       >
-                        <h6 id="valse">Applied For</h6>
+                        <h6 id="isplayselectedjo">
+                          {" "}
+                          {jobnamearray.join().substr(0, 50)}..
+                        </h6>
                         <i
-                          class="fa fa-sort-down"
+                          className="fa fa-sort-down"
                           style={{
                             fontSize: "30px",
                             color: "#3fb2aa",
@@ -586,20 +671,22 @@ class Editprofile extends Component {
                       id="demo"
                     />
                   </Popup>
-                  <h5 id="valsel"></h5>
+                  {/* <div id="displayselectedjob">
+                    {jobnamearray.join().substr(0, 50)}..
+                  </div> */}
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <p id="label">Are you fresher?</p>
 
                   <p>
                     <label>
                       <input
                         name="fresher"
-                        value="true"
+                        // value="true"
                         onClick={this.handleRadio}
                         type="radio"
                         id="ra"
-                        defaultValue={fresher}
+                        value={fresher}
                       />
                       <span id="label">Yes</span>
                     </label>
@@ -608,22 +695,22 @@ class Editprofile extends Component {
                     <label>
                       <input
                         name="fresher"
-                        value="false"
+                        // value="false"
                         onClick={this.handleRadio}
                         type="radio"
                         id="ra"
-                        defaultValue={fresher}
+                        value={fresher}
                       />
                       <span id="label">No</span>
                     </label>
                   </p>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
+              <div className="col-md-6">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Phone Number *"
                     type="tel"
                     name="mob"
@@ -632,10 +719,10 @@ class Editprofile extends Component {
                     onChange={this.handleChange.bind(this)}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Aadhar Card Number *"
                     type="text"
                     name="aadharNum"
@@ -647,10 +734,10 @@ class Editprofile extends Component {
                     defaultValue={aadharNum}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Education Qualification *"
                     type="text"
                     name="eduQual"
@@ -659,23 +746,21 @@ class Editprofile extends Component {
                     defaultValue={eduQual}
                   />
                 </div>
-                <div class="form-group">
-                  {/* <input type="text" class="form-control" placeholder="Job Updates *" value=""/> */}
+                <div className="form-group">
                   <Form.Control
                     as="select"
                     onChange={this.handleChange2}
                     id="update"
-                    //defaultValue={email}
                   >
                     <option value="1">{jobUpdate}</option>
-                    {this.state.Updates.map((jobUpdate) => (
-                      <option key={jobUpdate} value={jobUpdate}>
+                    {this.state.Updates.map((jobUpdatee) => (
+                      <option key={jobUpdatee} value={jobUpdatee}>
                         {jobUpdate}
                       </option>
                     ))}
                   </Form.Control>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <textarea
                     type="text"
                     //class="form-control"
@@ -689,11 +774,10 @@ class Editprofile extends Component {
             </div>
             {/* end section-1 */}
             {/* start section-2 */}
-            <div class="row" id="section-2">
-              <div class="col-md-6">
-                <div class="form-group">
+            <div className="row" id="section-2">
+              <div className="col-md-6">
+                <div className="form-group">
                   <p id="label">Currently working?</p>
-
                   <p>
                     <label>
                       <input
@@ -701,7 +785,6 @@ class Editprofile extends Component {
                         value="true"
                         onClick={this.handleRadio1}
                         type="radio"
-                        defaultValue={working}
                       />
                       <span id="label">Yes</span>
                     </label>
@@ -713,7 +796,7 @@ class Editprofile extends Component {
                         value="false"
                         onClick={this.handleRadio1}
                         type="radio"
-                        defaultValue={working}
+                        // defaultValue={working}
                       />
                       <span id="label">No</span>
                     </label>
@@ -723,12 +806,12 @@ class Editprofile extends Component {
             </div>
             {/* end section-2 */}
             {/* start section-3 if currently working yes*/}
-            <div class="row" id="section-3">
-              <div class="col-md-6">
-                <div class="form-group">
+            <div className="row" id="section-3">
+              <div className="col-md-6">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Years of Experience *"
                     name="experience"
                     pattern="[0-9]*"
@@ -738,10 +821,10 @@ class Editprofile extends Component {
                     defaultValue={experience}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Job Location *"
                     name="jobLocation"
                     onChange={this.handleChange.bind(this)}
@@ -751,10 +834,10 @@ class Editprofile extends Component {
                     defaultValue={jobLocation}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Current Location *"
                     name="currentLocation"
                     onChange={this.handleChange.bind(this)}
@@ -765,21 +848,21 @@ class Editprofile extends Component {
                   />
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
+              <div className="col-md-6">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Enter Current Company Name *"
                     name="companyName"
                     onChange={this.handleChange.bind(this)}
                     defaultValue={companyName}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Designation *"
                     name="designation"
                     onChange={this.handleChange.bind(this)}
@@ -788,7 +871,7 @@ class Editprofile extends Component {
                     defaultValue={designation}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <p id="label">Are you serving notice period?</p>
                   <p>
                     <label>
@@ -798,7 +881,7 @@ class Editprofile extends Component {
                         onClick={this.handleRadio2}
                         type="radio"
                         id="ra"
-                        defaultValue={noticePeriod}
+                        // defaultValue={noticePeriod}
                       />
                       <span id="label">Yes</span>
                     </label>
@@ -811,7 +894,7 @@ class Editprofile extends Component {
                         onClick={this.handleRadio2}
                         type="radio"
                         id="ra"
-                        defaultValue={noticePeriod}
+                        // defaultValue={noticePeriod}
                       />
                       <span id="label">No</span>
                     </label>
@@ -821,11 +904,11 @@ class Editprofile extends Component {
             </div>
             {/* end section-3 */}
             {/* start section-4 if serving notice period */}
-            <div class="row" id="section-4">
-              <div class="col-md-6">
-                <div class="form-group">
+            <div className="row" id="section-4">
+              <div className="col-md-6">
+                <div className="form-group">
                   <input
-                    class="form-control"
+                    className="form-control"
                     placeholder="Days *"
                     type="number"
                     name="noOfDays"
@@ -833,10 +916,10 @@ class Editprofile extends Component {
                     defaultValue={noOfDays}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="UpTo *"
                     type="number"
                     name="upTo"
@@ -845,8 +928,8 @@ class Editprofile extends Component {
                   />
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
+              <div className="col-md-6">
+                <div className="form-group">
                   <p id="label">Is it negotiable?</p>
 
                   <p>
@@ -857,7 +940,7 @@ class Editprofile extends Component {
                         onClick={this.handleRadio3}
                         type="radio"
                         id="ra"
-                        defaultValue={negotiable}
+                        // defaultValue={negotiable}
                       />
                       <span id="label">Yes</span>
                     </label>
@@ -870,7 +953,7 @@ class Editprofile extends Component {
                         onClick={this.handleRadio3}
                         type="radio"
                         id="ra"
-                        defaultValue={negotiable}
+                        // defaultValue={negotiable}
                       />
                       <span id="label">No</span>
                     </label>
@@ -880,12 +963,12 @@ class Editprofile extends Component {
             </div>
             {/*end section-4 */}
             {/*start section-5 */}
-            <div class="row" id="section-5">
-              <div class="col-md-6">
-                <div class="form-group">
+            <div className="row" id="section-5">
+              <div className="col-md-6">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Years of Experience *"
                     name="experience"
                     pattern="[0-9]*"
@@ -895,10 +978,10 @@ class Editprofile extends Component {
                     defaultValue={experience}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Previous Job Location *"
                     name="prevjobLocation"
                     onChange={this.handleChange.bind(this)}
@@ -907,10 +990,10 @@ class Editprofile extends Component {
                     defaultValue={prevjobLocation}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Current Location *"
                     name="currentLocation"
                     onChange={this.handleChange.bind(this)}
@@ -920,22 +1003,22 @@ class Editprofile extends Component {
                   />
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
+              <div className="col-md-6">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Previous Company Name *"
                     type="text"
                     name="prevcompanyName"
                     onChange={this.handleChange.bind(this)}
-                    ddefaultValue={prevcompanyName}
+                    defaultValue={prevcompanyName}
                   />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Previous Designation *"
                     name="prevdesignation"
                     onChange={this.handleChange.bind(this)}
@@ -947,16 +1030,14 @@ class Editprofile extends Component {
               </div>
             </div>
             {/*end section-5 */}
-            <div class="text-center">
-              {/* </div> */}
-              {/* <input type="file" onChange={this.handleResume}></input> */}
+            <div className="text-center">
               <div
-                class="btn btn-default image-preview-input"
+                className="btn btn-default image-preview-input"
                 id="btnheight"
                 style={{ marginLeft: "-121px" }}
               >
                 <img src={file} id="fileimg" />
-                <span class="image-preview-input-title">Update Resume</span>
+                <span className="image-preview-input-title">Update Resume</span>
                 <input
                   type="file"
                   accept="image/png, image/jpeg, image/gif"
@@ -986,32 +1067,29 @@ class Editprofile extends Component {
                 <span id="doc">Upload Resume</span>
               </label> */}
             </div>
-            <div class="profile-header-container" id="submission">
-              {/* <div class="ui checkbox"> */}
-              <center>
-                {/* <div class="form-group">  */}
-
-                {/* </div> */}
+            <div className="profile-header-container" id="submission">
+              {/* <center>
+                
                 <input
                   name="check"
                   onClick={this.handleCheck}
                   type="checkbox"
                   value=""
                 />
-                <span>Terms and Conditions</span>
+                <span>Terms and Conditions</span> */}
 
-                {/* <p className="center red-text">{this.state.checkBoxerror}</p> */}
-              </center>
+              {/* <p className="center red-text">{this.state.checkBoxerror}</p> */}
+              {/* </center> */}
               {/* </div> */}
             </div>
             {/* start section-6 */}
-            <div class="row" id="section-6">
-              <div class="col-md-6">
+            <div className="row" id="section-6">
+              <div className="col-md-6">
                 <button type="button" onClick={this.handleCancel} id="cancel">
                   Cancel
                 </button>
               </div>
-              <div class="col-md-6">
+              <div className="col-md-6">
                 <button type="button" onClick={this.handleSubmit} id="save">
                   Save
                 </button>

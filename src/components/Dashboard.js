@@ -611,14 +611,22 @@ class Dashboard extends Component {
               >
                 <div id="editicn">
                   <Popup
-                    contentStyle={{ width: "75%" }}
+                    contentStyle={{ width: "95%" }}
                     trigger={
-                      <div className="right-align" style={{ width: "75%" }}>
+                      <div
+                        className="col-8 mx-auto text-center z-depth-1"
+                        id="editprofile"
+                      >
                         <img src={edit} width="20" height="20"></img>
+                        <small
+                          className="center-align editprofile"
+                          style={{ color: "#3fb2aa" }}
+                        >
+                          Edit Profile
+                        </small>
                       </div>
                     }
                     modal
-                    position="center"
                     width="70%"
                   >
                     {(close) => (

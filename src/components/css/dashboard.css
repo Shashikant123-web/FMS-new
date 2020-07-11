@@ -7,7 +7,7 @@
   overflow: auto;
 }
 #profile {
-  height: 409px;
+  height: 431px;
   margin-bottom: 31px;
   border-radius: 5px;
 }
@@ -226,4 +226,11 @@ nav .nav-wrapper {
 #recommendedList {
   display: flex;
   flex-direction: row;
+}
+#editprofile {
+  border-radius: 50px;
+  width: 100px;
+  margin-top: 10px;
+  /* margin-left: 55px; */
+  padding: 3px;
 }
