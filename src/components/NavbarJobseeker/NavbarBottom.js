@@ -99,7 +99,7 @@ class NavbarBottom extends Component {
                   </u>
                   <span className="show-on-small hide-on-med-and-up">
                     <u className="blue-text" style={{ cursor: "pointer" }}>
-                      1800-121-0786
+                      <a href="tel:1800-121-0786">1800-121-0786</a>
                     </u>
                   </span>
                 </p>

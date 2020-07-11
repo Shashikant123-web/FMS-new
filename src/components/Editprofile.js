@@ -667,7 +667,7 @@ class Editprofile extends Component {
                     id="update"
                     //defaultValue={email}
                   >
-                    <option value="1">Get job opening updates</option>
+                    <option value="1">{jobUpdate}</option>
                     {this.state.Updates.map((jobUpdate) => (
                       <option key={jobUpdate} value={jobUpdate}>
                         {jobUpdate}
