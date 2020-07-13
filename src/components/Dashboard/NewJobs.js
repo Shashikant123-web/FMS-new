@@ -454,9 +454,9 @@ export class newJobs extends Component {
                     )}
                     <strong
                       className="right"
-                      onClick={() => {
-                        this.handleHide(job.id);
-                      }}
+                      // onClick={() => {
+                      //   this.handleHide(job.id);
+                      // }}
                     >
                       <i
                         className="material-icons teal-text left"

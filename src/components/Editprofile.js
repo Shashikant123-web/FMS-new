@@ -105,6 +105,9 @@ class Editprofile extends Component {
         )
         .then((res) => {
           console.log(res.data.data[0].docId);
+          console.log(res.data.data[1].docId);
+          console.log(res.data.data[2].docId);
+          console.log(res.data.data);
           this.setState({
             docId: res.data.data[0].docId,
           });
@@ -407,6 +410,7 @@ class Editprofile extends Component {
       .catch((err) => console.log(err));
   };
   handleSubmit = (e) => {
+    e.preventDefault();
     console.log("submit");
     const {
       name,
@@ -431,43 +435,41 @@ class Editprofile extends Component {
     } = this.props.editProfile.payLoad;
     console.log(name);
 
-    e.preventDefault();
-    if (this.state.check === true) {
-      axios
-        .put(
-          "/stskFmsApi/jobseeker/editJS",
-          {
-            id: this.state.userId,
-            name,
-            email,
-            mob,
-            panNum,
-            aadharNum,
-            eduQual,
-            experience,
-            working,
-            jobUpdate,
-            address,
-            fresher,
-            companyName,
-            destination,
-            noticePeriod,
-            noOfDays,
-            currentLocation,
-            negotiable,
-            upTo,
-            jobLocation,
-            userLogin: {
-              id: this.state.userLogin,
-            },
+    axios
+      .put(
+        "/stskFmsApi/jobseeker/editJS",
+        {
+          id: this.state.userId,
+          name,
+          email,
+          mob,
+          panNum,
+          aadharNum,
+          eduQual,
+          experience,
+          working,
+          jobUpdate,
+          address,
+          fresher,
+          companyName,
+          destination,
+          noticePeriod,
+          noOfDays,
+          currentLocation,
+          negotiable,
+          upTo,
+          jobLocation,
+          userLogin: {
+            id: this.state.userLogin,
           },
-          { headers: header }
-        )
-        .then((res) => {
-          console.log(res.data);
-        });
-      if (formValid(this.state.editProfile)) {
-        console.log(`
+        },
+        { headers: header }
+      )
+      .then((res) => {
+        console.log(res.data);
+      });
+    if (formValid(this.state.editProfile)) {
+      console.log(`
               --SUBMITTING--
               Full Name: ${this.state.editProfile.name}
               Mobile Number: ${this.state.editProfile.mob}
@@ -500,13 +502,8 @@ class Editprofile extends Component {
             prevdesignation:${this.state.editProfile.prevdesignation},
             prevjobLocation:${this.state.editProfile.prevjobLocation},
              `);
-      } else {
-        console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
-      }
     } else {
-      this.setState({
-        checkBoxerror: "Accept Terms & Conditions",
-      });
+      console.error("FORM INVALID - DISPLAY ERROR MESSAGE");
     }
   };
 
@@ -753,9 +750,9 @@ class Editprofile extends Component {
                     id="update"
                   >
                     <option value="1">{jobUpdate}</option>
-                    {this.state.Updates.map((jobUpdatee) => (
-                      <option key={jobUpdatee} value={jobUpdatee}>
-                        {jobUpdate}
+                    {this.state.Updates.map((job) => (
+                      <option key={job} value={job}>
+                        {job}
                       </option>
                     ))}
                   </Form.Control>

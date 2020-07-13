@@ -414,7 +414,7 @@ class UserDetails extends Component {
   render() {
     const { mobileNumber, email } = this.props.details;
     console.log(this.state.jobUpdate);
-    console.log(this.props);
+    console.log(this.state);
     const { selectedValue } = this.state;
     return (
       <div class="container register-form">

@@ -125,7 +125,10 @@ export const handleUnsave = (save) => {
       .post("/stskFmsApi/jobseeker/unSaveJobs/" + userId + "/" + id, {
         headers: header,
       })
-      .then((res) => {});
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
     //recommendeJobs(userId);
     const time2 = setTimeout(() => {
       axios
