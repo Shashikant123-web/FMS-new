@@ -26,6 +26,7 @@ const header = {
 
 export class RecomendedJobs extends Component {
   state = {
+    testSearch: [],
     showPopup: false,
     id: "",
     userId: "",
@@ -51,7 +52,19 @@ export class RecomendedJobs extends Component {
       this.setState({
         userId: this.props.dashboard.payLoad.details.id,
       });
+      axios
+        .get("/stskFmsApi/jobTypes/getAllJobTypes", { headers: header })
+        .then((res) => {
+          this.setState({
+            testSearch: res.data.data,
+          });
+        });
     }
+  }
+  testSearch() {
+    return this.state.testSearch.map((type) => {
+      return <option value={type.name} />;
+    });
   }
   handleRadio = (e) => {
     // Get the modal
@@ -548,12 +561,14 @@ export class RecomendedJobs extends Component {
                 <div className="nav-wrapper">
                   <div className="input-field">
                     <input
+                      list="browsers"
                       id="dashinput"
                       type="search"
                       onChange={this.handleSearchInput}
                       required
                       placeholder="Search jobs"
                     />
+                    <datalist id="browsers">{this.testSearch()}</datalist>
                     <i className="material-icons right">
                       <a
                         className="btn hide-on-small-only"
