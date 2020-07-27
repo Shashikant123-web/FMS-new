@@ -20,19 +20,19 @@ class Register extends Component {
     email: "",
     password: "",
     userRoles: {
-      id: "",
+      id: this.props.location.JobId.id,
     },
     conformPwd: "",
     error: "",
   };
-  componentDidMount() {
-    this.setState({
-      userRoles: {
-        id: this.props.match.params.id,
-        name: this.props.match.params.name,
-      },
-    });
-  }
+  // componentDidMount() {
+  //   this.setState({
+  //     userRoles: {
+  //       id: this.props.match.params.id,
+  //       name: this.props.match.params.name,
+  //     },
+  //   });
+  // }
   handleVisibility = () => {
     this.setState({
       visibility: !this.state.visibility,
@@ -96,8 +96,6 @@ class Register extends Component {
           { headers: header }
         )
         .then((response) => {
-          console.log(response);
-          console.log(this.state);
           this.props.history.push({
             pathname: "/userDetails",
           });
@@ -111,11 +109,6 @@ class Register extends Component {
   render() {
     const { mob, email, password, userRoles } = this.state;
     const { visibility, visibility2 } = this.state;
-
-    console.log(this.state);
-    console.log(this.props.details.mobileNumber);
-    // const { formErrors } = this.state;
-
     return (
       <div id="body">
         <div className="row" id="main1">
@@ -128,7 +121,7 @@ class Register extends Component {
               arrow_back
             </i>
             <h3 className="center-align" id="Registertext">
-              {this.props.match.params.name}
+              {this.props.location.JobId.name}
             </h3>
 
             <form

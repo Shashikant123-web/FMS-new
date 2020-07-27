@@ -21,7 +21,10 @@ import {
 } from "../../ReduxStore/Actions/RecomendedJobsAction";
 
 const header = {
-  "x-api-key": " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
+  "x-api-key": "$2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
+};
+const headers = {
+  "x-api-key": "$2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
 };
 
 export class RecomendedJobs extends Component {
@@ -53,7 +56,7 @@ export class RecomendedJobs extends Component {
         userId: this.props.dashboard.payLoad.details.id,
       });
       axios
-        .get("/stskFmsApi/jobTypes/getAllJobTypes", { headers: header })
+        .get("/stskFmsApi/jobTypes/getAllJobTypes", { headers })
         .then((res) => {
           this.setState({
             testSearch: res.data.data,
@@ -110,12 +113,29 @@ export class RecomendedJobs extends Component {
     }, 50);
   };
   handleUnsave = (id) => {
-    this.setState({
-      id,
-    });
-    const time2 = setTimeout(() => {
-      this.props.handleUnsave(this.state);
-    }, 50);
+    // this.setState({
+    //   id,
+    // });
+    // const time2 = setTimeout(() => {
+    //   this.props.handleUnsave(this.state);
+    // }, 50);
+    axios
+      .post(
+        "http://stskfacilities.com:8081/stskFmsApi/jobseeker/unSaveJobs/60/53",
+        {
+         headers
+        }
+      )
+      // .post(
+      //   "http://stskfacilities.com:8081/stskFmsApi/jobseeker/unSaveJobs/18/51",
+      //   {
+      //     headers,
+      //   }
+      // )
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+      });
   };
 
   handleApply = (id) => {

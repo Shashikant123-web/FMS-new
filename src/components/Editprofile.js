@@ -95,23 +95,23 @@ class Editprofile extends Component {
         });
     }, 1000);
     const timer2 = setTimeout(() => {
-      axios
-        .get(
-          "/stskFmsApi/jobseekerdoc/getByJobSeekerId/" +
-            this.props.editProfile.payLoad.details.id,
-          {
-            headers: header,
-          }
-        )
-        .then((res) => {
-          console.log(res.data.data[0].docId);
-          console.log(res.data.data[1].docId);
-          console.log(res.data.data[2].docId);
-          console.log(res.data.data);
-          this.setState({
-            docId: res.data.data[0].docId,
-          });
-        });
+      // axios
+      //   .get(
+      //     "/stskFmsApi/jobseekerdoc/getByJobSeekerId/" +
+      //       this.props.editProfile.payLoad.details.id,
+      //     {
+      //       headers: header,
+      //     }
+      //   )
+      //   .then((res) => {
+      //     console.log(res.data.data[0].docId);
+      //     console.log(res.data.data[1].docId);
+      //     console.log(res.data.data[2].docId);
+      //     console.log(res.data.data);
+      //     this.setState({
+      //       docId: res.data.data[0].docId,
+      //     });
+      //   });
     }, 2000);
     const timer3 = setTimeout(() => {
       axios

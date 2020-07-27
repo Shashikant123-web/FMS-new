@@ -10,7 +10,7 @@ import resident from "./Images/resident2.png";
 import "./css/preregister.css";
 import axios from "axios";
 
-const header = {
+const headers = {
   "x-api-key": " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
 };
 
@@ -21,40 +21,50 @@ export class Register extends Component {
     userRoles: {
       id: "",
     },
+    Jobseeker: {
+      id: 1,
+      name: "Jobseeker",
+    },
+    Associationn: {
+      id: 2,
+      name: "Accosiation",
+    },
+    Resident: {
+      id: 3,
+      name: "Resident",
+    },
+    Vendor: {
+      id: 4,
+      name: "Vendor",
+    },
   };
-  componentDidMount() {
-    this._isMounted = true;
-    axios
-      .get("/stskFmsApi/userRoles/getAllUserRoles", { headers: header })
-      .then((res) => {
-        console.log(res.data.data);
-        this.setState({
-          userRoless: res.data.data,
-        });
-      });
-  }
-
   handleChange = (e) => {
     this.props.history.push({
-      path: "/register",
-      state: {
-        mobileNumber: this.state,
-      },
+      pathname: "/register",
+      JobId: this.state.Jobseeker,
+    });
+  };
+  handleChange1 = (e) => {
+    this.props.history.push({
+      pathname: "/register",
+      JobId: this.state.Associationn,
+    });
+  };
+  handleChange2 = (e) => {
+    this.props.history.push({
+      pathname: "/register",
+      JobId: this.state.Resident,
+    });
+  };
+  handleChange3 = (e) => {
+    this.props.history.push({
+      pathname: "/register",
+      JobId: this.state.Vendor,
     });
   };
 
   render() {
     const { userRoless } = this.state;
-    console.log(this.state);
-    const postList = userRoless.map((post, index) => {
-      return (
-        <div key={index}>
-          <Link to={"/register" + "/" + post.id + "/" + post.name}>
-            <h6 id="pre">{post.name}</h6>
-          </Link>
-        </div>
-      );
-    });
     return (
       <div className="center row" id="body">
         <div className="center col s10" id="main">
@@ -98,12 +108,12 @@ export class Register extends Component {
                   width="60"
                   height="60"
                 ></img>
-                {postList[0]}
+                <h6 id="pre">Jobseeker</h6>
               </div>
               <div
                 className="col s12 m6 l6"
                 id="associationn"
-                onClick={this.handleChange}
+                onClick={this.handleChange1}
               >
                 <img
                   className="left align"
@@ -111,14 +121,14 @@ export class Register extends Component {
                   width="60"
                   height="60"
                 ></img>
-                {postList[1]}
+                <h6 id="pre">Association</h6>
               </div>
             </div>
             <div className="row">
               <div
                 className="col s12 m6 l6"
                 id="vendorr"
-                onClick={this.handleChange}
+                onClick={this.handleChange2}
               >
                 <img
                   className="left align"
@@ -126,12 +136,12 @@ export class Register extends Component {
                   width="60"
                   height="60"
                 ></img>
-                {postList[2]}
+                <h6 id="pre">Residend</h6>
               </div>
               <div
                 className="col s12 m6 l6"
                 id="residentt"
-                onClick={this.handleChange}
+                onClick={this.handleChange3}
               >
                 <img
                   className="left align"
@@ -139,7 +149,7 @@ export class Register extends Component {
                   width="60"
                   height="60"
                 ></img>
-                {postList[3]}
+                <h6 id="pre">Vendor</h6>
               </div>
             </div>
           </center>

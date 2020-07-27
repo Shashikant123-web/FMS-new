@@ -11,7 +11,7 @@ import { createProject } from "../ReduxStore/Actions/SendOtpAction";
 //import PhoneInput from 'react-phone-number-input'
 //import OTPInput from 'react-otp-input';
 
-const header = {
+const headers = {
   "x-api-key": " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
 };
 
@@ -22,7 +22,6 @@ class SendOtp extends Component {
       countryCode: "91",
       mobileNumber: " ",
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
   userLogin = (e) => {
     this.props.history.push("/userLogin");

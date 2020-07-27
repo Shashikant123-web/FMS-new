@@ -32,6 +32,7 @@
   background: white;
   border-radius: 16px;
   padding: 5px;
+  cursor: pointer;
 }
 #jobseeeker,
 #vendorr {
@@ -60,6 +61,7 @@
   font-size: 17px;
   color: #3fb2aa;
   text-decoration: none;
+  cursor: pointer;
 }
 @media only screen and (max-width: 625px) {
   #main {
