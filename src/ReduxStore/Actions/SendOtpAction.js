@@ -12,10 +12,7 @@ export const createProject = (project) => {
       .post("/stskFmsApi/otpServices/sendOtpBySMS", project, {
         headers: header,
       })
-      .then((Response) => {
-        console.log(Response);
-        console.log(Response.data);
-      })
+      .then((Response) => {})
       .catch((error) => {
         console.log(error);
       });

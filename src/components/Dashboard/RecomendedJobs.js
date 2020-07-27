@@ -123,7 +123,7 @@ export class RecomendedJobs extends Component {
       .post(
         "http://stskfacilities.com:8081/stskFmsApi/jobseeker/unSaveJobs/60/53",
         {
-         headers
+          headers,
         }
       )
       // .post(
@@ -192,8 +192,6 @@ export class RecomendedJobs extends Component {
     if (this.props.token.SendOtp.token !== true) {
       return <Redirect to="/userLogin" />;
     }
-    console.log(this.props.dashboard.payLoad.details.id);
-    console.log(this.state);
     const {
       payLoad: { userId },
       recomendedJobs,

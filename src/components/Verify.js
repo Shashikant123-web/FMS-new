@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 import axios from "axios";
-import image from "./Images/Background.png";
 import logo from "./Images/Mainlogo.png";
 import OtpInput from "react-otp-input";
 import "./css/Verify.css";
@@ -30,21 +28,22 @@ class Verify extends Component {
     });
   };
   handleResend = (e) => {
+    const { countryCode, mobileNumber } = this.state;
     axios
       .post(
         "/stskFmsApi/otpServices/resendOtpBySMS",
         {
-          countryCode: this.state.countryCode,
-          mobileNumber: this.state.mobileNumber,
+          countryCode,
+          mobileNumber,
         },
         { headers: header }
       )
-      .then((res) => {
-        console.log(res);
-      });
+      .then((res) => {});
   };
   handleSubmit = (e) => {
     e.preventDefault();
+    const { countryCode, mobileNumber, otp } = this.state;
+
     this.setState({
       error: "",
       loading: true,
@@ -54,35 +53,24 @@ class Verify extends Component {
         "/stskFmsApi/otpServices/verifyOtpBySMS",
         {
           countryCode: 91,
-          mobileNumber: this.state.mobileNumber,
+          mobileNumber,
           otp_input: this.state.otp,
         },
         { headers: header }
       )
       .then((Response) => {
-        console.log(Response);
-        console.log(Response.data);
-
         if (Response.data.type === "success") {
           axios
-            .get("/stskFmsApi/userLogin/getByMob/" + this.state.mobileNumber, {
+            .get("/stskFmsApi/userLogin/getByMob/" + mobileNumber, {
               headers: header,
             })
             .then((Response) => {
-              console.log(Response.data);
-              console.log(Response.data);
-
               if (Response.data.success === 1) {
                 axios
-                  .get(
-                    "/stskFmsApi/jobseeker/getByMob/" + this.state.mobileNumber,
-                    {
-                      headers: header,
-                    }
-                  )
+                  .get("/stskFmsApi/jobseeker/getByMob/" + mobileNumber, {
+                    headers: header,
+                  })
                   .then((res) => {
-                    console.log(res.data);
-
                     if (res.data.success === 1) {
                       this.setState({
                         userId: res.data.data.id,
@@ -110,8 +98,9 @@ class Verify extends Component {
               }
             })
             .catch((error) => {
-              console.log(error);
-              console.log(this.props.number);
+              this.setState({
+                error,
+              });
             });
         } else {
           this.setState({
@@ -124,12 +113,6 @@ class Verify extends Component {
   };
   render() {
     const { loading } = this.state;
-    // console.log(this.props);
-    console.log(this.state);
-    console.log(this.props.sendOtp.loading);
-
-    //console.log(this.props.sendOtp.mobileNumber);
-
     return (
       <div id="body">
         <div className="row" id="main1">

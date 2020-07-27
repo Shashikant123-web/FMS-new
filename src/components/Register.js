@@ -71,7 +71,7 @@ class Register extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
-    const { password, conformPwd } = this.state;
+    const { password, conformPwd, mob, email } = this.state;
 
     if (password !== conformPwd) {
       this.setState({
@@ -81,14 +81,13 @@ class Register extends Component {
       });
     } else {
       this.setState({ error: "" });
-
       axios
         .post(
           "/stskFmsApi/userLogin/createUL",
           {
-            mob: this.state.mob,
-            email: this.state.email,
-            password: this.state.password,
+            mob,
+            email,
+            password,
             userRoles: {
               id: this.state.userRoles.id,
             },
@@ -107,7 +106,6 @@ class Register extends Component {
   };
 
   render() {
-    const { mob, email, password, userRoles } = this.state;
     const { visibility, visibility2 } = this.state;
     return (
       <div id="body">
