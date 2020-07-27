@@ -16,16 +16,38 @@ import {
 } from "../../ReduxStore/Actions/RecomendedJobsAction";
 import { connect } from "react-redux";
 
-const header = {
+const headers = {
   "x-api-key": " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
 };
 
 export class SavedJobs extends Component {
   state = {
+    testSearch: [],
     id: "",
     userId: "",
     text: "",
   };
+  componentDidMount() {
+    if (this.props.token.SendOtp.token !== true) {
+      return <Redirect to="/userLogin" />;
+    } else {
+      this.setState({
+        userId: this.props.dashboard.payLoad.details.id,
+      });
+      axios
+        .get("/stskFmsApi/jobTypes/getAllJobTypes", { headers })
+        .then((res) => {
+          this.setState({
+            testSearch: res.data.data,
+          });
+        });
+    }
+  }
+  testSearch() {
+    return this.state.testSearch.map((type) => {
+      return <option value={type.name} />;
+    });
+  }
   handleSearchInput = (e) => {
     this.setState({
       text: e.target.value,
@@ -36,16 +58,6 @@ export class SavedJobs extends Component {
     this.props.handleSearch(this.state);
     this.props.history.push("/searchedJobs");
   };
-
-  componentDidMount() {
-    if (this.props.token.SendOtp.token !== true) {
-      return <Redirect to="/userLogin" />;
-    } else {
-      this.setState({
-        userId: this.props.dashboard.payLoad.details.id,
-      });
-    }
-  }
   handleApply = (id) => {
     this.setState({
       id,
@@ -65,7 +77,7 @@ export class SavedJobs extends Component {
       .post(
         "/stskFmsApi/jobseeker/unSaveJobs/" + this.state.userId + "/" + id,
         {
-          headers: header,
+          headers,
         }
       )
       .then((res) => {
@@ -329,18 +341,19 @@ export class SavedJobs extends Component {
                 How can we help?
               </h6>
             </div>
-
             <form onSubmit={this.handleSearch}>
               <nav className="container white" id="search">
                 <div className="nav-wrapper">
                   <div className="input-field">
                     <input
+                      list="browsers"
                       id="dashinput"
                       type="search"
                       onChange={this.handleSearchInput}
                       required
                       placeholder="Search jobs"
                     />
+                    <datalist id="browsers">{this.testSearch()}</datalist>
                     <i className="material-icons right">
                       <a
                         className="btn hide-on-small-only"
@@ -353,7 +366,6 @@ export class SavedJobs extends Component {
                         Search
                       </a>
                     </i>
-
                     <i
                       className="material-icons right show-on-small hide-on-med-and-up grey-text"
                       onClick={this.handleSearch}

@@ -20,26 +20,16 @@ import {
   handleSearch,
 } from "../../ReduxStore/Actions/RecomendedJobsAction";
 
-const header = {
+const headers = {
   "x-api-key": " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
 };
 
 export class newJobs extends Component {
   state = {
+    testSearch: [],
     userId: "",
     text: "",
   };
-  handleSearchInput = (e) => {
-    this.setState({
-      text: e.target.value,
-    });
-  };
-  handleSearch = (e) => {
-    e.preventDefault();
-    this.props.handleSearch(this.state);
-    this.props.history.push("/searchedJobs");
-  };
-
   componentDidMount() {
     if (this.props.token.SendOtp.token !== true) {
       return <Redirect to="/userLogin" />;
@@ -47,8 +37,30 @@ export class newJobs extends Component {
       this.setState({
         userId: this.props.dashboard.payLoad.details.id,
       });
+      axios
+        .get("/stskFmsApi/jobTypes/getAllJobTypes", { headers })
+        .then((res) => {
+          this.setState({
+            testSearch: res.data.data,
+          });
+        });
     }
   }
+  handleSearchInput = (e) => {
+    this.setState({
+      text: e.target.value,
+    });
+  };
+  testSearch() {
+    return this.state.testSearch.map((type) => {
+      return <option value={type.name} />;
+    });
+  }
+  handleSearch = (e) => {
+    e.preventDefault();
+    this.props.handleSearch(this.state);
+    this.props.history.push("/searchedJobs");
+  };
   handleSave = (id) => {
     this.setState({
       id,
@@ -508,12 +520,14 @@ export class newJobs extends Component {
                 <div className="nav-wrapper">
                   <div className="input-field">
                     <input
+                      list="browsers"
                       id="dashinput"
                       type="search"
                       onChange={this.handleSearchInput}
                       required
                       placeholder="Search jobs"
                     />
+                    <datalist id="browsers">{this.testSearch()}</datalist>
                     <i className="material-icons right">
                       <a
                         className="btn hide-on-small-only"

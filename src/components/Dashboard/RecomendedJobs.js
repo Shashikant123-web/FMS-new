@@ -20,9 +20,6 @@ import {
   handleSearch,
 } from "../../ReduxStore/Actions/RecomendedJobsAction";
 
-const header = {
-  "x-api-key": "$2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
-};
 const headers = {
   "x-api-key": "$2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
 };
@@ -105,9 +102,6 @@ export class RecomendedJobs extends Component {
     this.setState({
       id,
     });
-    // this.props.handleSave({ id }, { userId: 12 });
-    // this.props.handleSave(this.state);
-
     const time = setTimeout(() => {
       this.props.handleSave(this.state);
     }, 50);
@@ -152,41 +146,6 @@ export class RecomendedJobs extends Component {
     var popup = document.getElementById("popupopen");
     popup.classList.toggle("show");
   }
-  //handleSave = (id) => {
-  // axios
-  //   .post(
-  //     "/stskFmsApi/jobseeker/saveJobs",
-  //     {
-  //       id: 27,
-  //       jobs: [
-  //         {
-  //           id: id,
-  //         }
-  //       ]
-  //     },
-  //     { headers: header }
-  //   )
-  //   .then((res) => {
-  //     console.log(res.data);
-  //     console.log(res);
-  //   });
-  // {
-  //   this.state.saved.map((savedId) => {
-  //     var flag = document.getElementById(id).innerHTML;
-
-  //     if (flag === "turned_in_not" && id == savedId) {
-  //       var a = (document.getElementById(id).innerHTML = "turned_in");
-  //       flag = 1;
-  //     } else {
-  //       var a = (document.getElementById(id).innerHTML = "turned_in_not");
-  //     }
-  //   });
-  // }
-  //   console.log(id);
-  //   this.setState({
-  //     saved: [...this.state.saved, id],
-  //   });
-  // };
 
   render() {
     if (this.props.token.SendOtp.token !== true) {
