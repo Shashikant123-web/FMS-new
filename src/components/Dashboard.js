@@ -34,7 +34,7 @@ const formValid = ({ formErrors, ...rest }) => {
   return valid;
 };
 
-const header = {
+const headers = {
   "x-api-key": " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
 };
 
@@ -86,6 +86,7 @@ class Dashboard extends Component {
       suggestions: [],
       names: [],
       text: "",
+      testSearch: [],
     };
   }
   componentDidMount(e) {
@@ -96,7 +97,14 @@ class Dashboard extends Component {
         userId: this.props.dashboard.payLoad.details.id,
       });
       axios
-        .get("/stskFmsApi/jobTypes/getAllJobTypes", { headers: header })
+        .get("/stskFmsApi/jobTypes/getAllJobTypes", { headers })
+        .then((res) => {
+          this.setState({
+            testSearch: res.data.data,
+          });
+        });
+      axios
+        .get("/stskFmsApi/jobTypes/getAllJobTypes", { headers })
         .then((res) => {
           console.log(res);
           console.log(res.data.data[0].name);
@@ -106,6 +114,11 @@ class Dashboard extends Component {
         })
         .catch((err) => console.log(err));
     }
+  }
+  testSearch() {
+    return this.state.testSearch.map((type) => {
+      return <option value={type.name} />;
+    });
   }
   handlejobtypes() {}
   handleRadioEdit(e) {
@@ -160,7 +173,7 @@ class Dashboard extends Component {
             },
           ],
         },
-        { headers: header }
+        { headers }
       )
       .then((res) => {
         console.log(res.data);
@@ -253,7 +266,7 @@ class Dashboard extends Component {
           userLogin: this.state.editprofile.jobLocation,
           jobTypes: this.state.editprofile.jobTypes,
         },
-        { headers: header }
+        { headers }
       )
       .then((res) => {
         console.log(res.data);
@@ -328,7 +341,7 @@ class Dashboard extends Component {
         .get(
           "/stskFmsApi/imageDoc/retriveWithPath/" +
             this.state.createeditprofileimagedocId,
-          { headers: header }
+          { headers }
         )
         .then((res) => {
           console.log(res);
@@ -469,25 +482,30 @@ class Dashboard extends Component {
               className="card darken-1 hoverable "
               id="recomendedJobsMainDashboard"
             >
-              <div className="card-content ">
-                <strong className="black-text">
+              <div
+                className="card-content"
+                style={{
+                  fontsize: "14px",
+                  letterSpacing: "0px",
+                }}
+              >
+                <p className="black-text">
                   Job position-
                   <span className="grey-text">{job.jobType}</span>
-                </strong>
+                </p>
                 <br></br>
-                <strong className="black-text">
+                <p className="black-text">
                   Experience-
                   <span className="grey-text">{job.experience}</span>
-                </strong>
+                </p>
                 <br></br>
-                <strong className="black-text">
+                <p className="black-text">
                   Location-
                   <span className="grey-text">{job.serviceArea}</span>
-                </strong>
-                <br></br>
+                </p>
               </div>
               <div className="card-action">
-                <strong className="left">{job.createdAt}</strong>
+                <p className="left">{job.createdAt}</p>
                 <i
                   className="material-icons teal-text right"
                   style={{ cursor: "pointer" }}
@@ -571,12 +589,14 @@ class Dashboard extends Component {
               <div className="nav-wrapper">
                 <div className="input-field">
                   <input
+                    list="browsers"
                     id="dashinput"
                     type="search"
                     onChange={this.handleSearchInput}
                     required
                     placeholder="Search jobs"
                   />
+                  <datalist id="browsers">{this.testSearch()}</datalist>
                   <i className="material-icons right">
                     <a
                       className="btn hide-on-small-only"
@@ -687,14 +707,17 @@ class Dashboard extends Component {
                     <br></br>
                   </div>
                   <strong className="center-align">{name}</strong>
-                  <div className="left-align">
-                    <p>
+                  <div
+                    className="left-align"
+                    style={{ fontSize: "13px", marginBottom: "15px" }}
+                  >
+                    <p className="dashFont">
                       <img
                         className="center"
                         id="dashicn"
                         src={location}
-                        width="23"
-                        height="23"
+                        width="20"
+                        height="20"
                       ></img>
                       {this.state.details.currentLocation}
                     </p>
@@ -703,39 +726,39 @@ class Dashboard extends Component {
                         className="center"
                         id="dashicn"
                         src={mail}
-                        width="20"
-                        height="20"
-                      ></img>
+                        width="14"
+                        height="14"
+                      />
                       {email}
                     </p>
-                    <p>
+                    <p id="dashMob">
                       <img
                         className="center"
                         id="dashicn"
                         src={call}
-                        width="20"
-                        height="20"
-                      ></img>
+                        width="16"
+                        height="16"
+                      />
                       {mob}
                     </p>
-                    <p>
+                    <p id="dashMob">
                       <img
                         className="center"
                         id="dashicn"
                         src={experiance}
-                        width="20"
-                        height="20"
-                      ></img>
+                        width="16"
+                        height="16"
+                      />
                       {experience}
                     </p>
-                    <p>
+                    <p id="dashMob">
                       <img
                         className="center"
                         id="dashicn"
                         src={book}
-                        width="23"
-                        height="23"
-                      ></img>
+                        width="17"
+                        height="17"
+                      />
                       {eduQual}
                     </p>
                   </div>
@@ -748,10 +771,11 @@ class Dashboard extends Component {
                   >
                     <img
                       className="center"
+                      style={{ marginRight: "18px" }}
                       src={logout}
                       width="20"
                       height="20"
-                    ></img>
+                    />
                     Logout
                   </a>
                   <br></br>
@@ -764,7 +788,12 @@ class Dashboard extends Component {
                   id="container"
                 >
                   <div>
-                    <h4 className="grey-text">Recommended jobs</h4>
+                    <h5
+                      className="grey-text"
+                      style={{ padding: "12px", fontWeight: "bold" }}
+                    >
+                      Recommended jobs
+                    </h5>
 
                     {recommendedList}
                     <div className="suggestionbox z-depth-1">
@@ -775,7 +804,7 @@ class Dashboard extends Component {
                     <div className="col s12 m12 l12">
                       <strong>
                         <div className="numberCircle left">{nmbr}</div>
-                        <h5 className="left">jobs recommended</h5>
+                        <h5 className="left">jobs recommended for you</h5>
                       </strong>
                       <a
                         className="btn right"
@@ -793,7 +822,6 @@ class Dashboard extends Component {
                     </div>
                   </div>
                 </div>
-
                 <div className="col s12 m10 l8 offset-m1">
                   <div className="col s12 m6 l6">
                     <div className="card white newJobs">
@@ -868,11 +896,32 @@ class Dashboard extends Component {
                       </h6>
                     </div>
                   </div>
+                  <div className="col s10 m10 l12 offset-m1 offset-s1 border appliedStatus grey lighten-5 hide-on-med-and-down">
+                    <h5 style={{ padding: "15px" }} className="grey-text">
+                      Appied status
+                    </h5>
+                    {appliedJobsList}
+                    <div className="col s12 m12 l12">
+                      <strong>
+                        <div className="numberCircle left">
+                          {appliedJobsNmbr}
+                        </div>
+                        <h5 className="left">jobs </h5>
+                      </strong>
+                      <a className="btn right" id="viewMore">
+                        View more
+                      </a>
+                      <br></br>
+                      <br></br>
+                    </div>
+                  </div>
                 </div>
               </div>
               {/*applied status*/}
-              <div className="col s10 m10 l10 offset-l1 offset-m1 offset-s1 border appliedStatus grey lighten-5">
-                <h4 className="grey-text">Appied status</h4>
+              <div className="col s10 m10 l12 offset-m1 offset-s1 border appliedStatus grey lighten-5 show-on-medium-and-down hide-on-large-only">
+                <h5 style={{ padding: "15px" }} className="grey-text">
+                  Appied status
+                </h5>
                 {appliedJobsList}
                 <div className="col s12 m12 l12">
                   <strong>
@@ -915,3 +964,12 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(withRouter(Dashboard));
+
+// <div
+// className="col s12 m10 l8 offset-m1"
+// style={{ marginLeft: "23px" }}
+// >
+// <div
+//   className="col s12 m6 l6"
+//   style={{ marginLeft: "-27px" }}
+// >

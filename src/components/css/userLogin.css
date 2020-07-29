@@ -34,17 +34,20 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-#icon_prefix {
-  margin-top: -12px;
+#icon_prefixx {
+  height: 38px;
   width: 242px;
   margin-left: 43px;
   font-size: 15px;
   font-family: "Lato";
   letter-spacing: 1px;
   color: #707070;
+  border: none;
+  border-radius: 11px;
+  background: white;
 }
 
-#icon_prefix::placeholder {
+#icon_prefixx::placeholder {
   font-size: 15px;
 }
 #input-type3 {
@@ -72,8 +75,7 @@
 
 #iconn {
   color: rgb(189, 180, 180);
-  margin-top: -4px;
-  font-size: 24px;
+  font-size: 21px;
 }
 #frm {
   margin-top: -23px;
@@ -113,7 +115,7 @@
 }
 
 #UserLoginButton {
-  width: 288px;
+  width: 291px;
   margin-top: 6px;
   outline: none;
   border: none;
@@ -203,3 +205,13 @@ i.right {
   position: absolute;
   top: 8px;
 }
+.input-field {
+  border: 1px solid teal;
+  border-radius: 11px;
+  height: 40px;
+}
+/* input::placeholder {
+  margin: 10%;
+  padding: 10px;
+  padding-left: 20px;
+} */

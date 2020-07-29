@@ -218,6 +218,7 @@ export class SavedJobs extends Component {
                               </span>
                             </strong>
                           </div>
+
                           <div className="col s12 m4 l4">
                             <br></br>
                             <strong className="black-text">
@@ -253,11 +254,7 @@ export class SavedJobs extends Component {
                         <div>
                           <strong>Description</strong>
                           <br></br>
-                          <p className="grey-text">
-                            Lorem Ipsum is simply dummy text of the printing and
-                            typesetting industry. since the 1500s, when an
-                            unknown
-                          </p>
+                          <p className="grey-text">{job.description}</p>
                         </div>
                         <div className="center">
                           <a

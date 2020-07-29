@@ -183,7 +183,7 @@ class UserLogin extends Component {
                   person
                 </i>
                 <input
-                  id="icon_prefix"
+                  id="icon_prefixx"
                   type="email"
                   size="30"
                   required
@@ -197,14 +197,12 @@ class UserLogin extends Component {
                   lock
                 </i>
                 <input
-                  id="icon_prefix"
+                  id="icon_prefixx"
                   type={visibility ? "text" : "password"}
                   placeholder="Password"
                   size="30"
                   required
                   onChange={this.handleChange2}
-                  // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                  // title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"
                 />
                 {visibility ? (
                   <i
@@ -221,11 +219,10 @@ class UserLogin extends Component {
                     visibility_off
                   </i>
                 )}
-                <br></br>
-                <br></br>
-                <strong className="red-text">{this.state.error}</strong>
               </div>
+              <strong className="center red-text">{this.state.error}</strong>
               <br></br>
+
               {loading && loading ? (
                 <button id="UserLoginButton">
                   {loading && <i className="fa fa-spinner fa-spin"></i>}
@@ -236,7 +233,7 @@ class UserLogin extends Component {
               )}
             </form>
             <strong id="forgot" onClick={this.forgetPwd}>
-              Forgot Password?
+              Forgot Password ?
             </strong>
           </center>
         </div>
@@ -251,3 +248,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 export default connect(null, mapDispatchToProps)(UserLogin);
+
+// border: 1px solid teal;
+//     border-radius: 11px;

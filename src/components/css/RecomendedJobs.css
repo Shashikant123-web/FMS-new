@@ -7,9 +7,10 @@ i.left {
   width: 130px;
   border-radius: 7px;
   text-transform: inherit;
+  box-shadow: none;
 }
 #savebtn {
-  border: 1px teal;
+  border: 2px teal;
   color: teal;
   text-transform: inherit;
   border-style: double;
@@ -18,6 +19,7 @@ i.left {
 #applybtn {
   background: teal;
   color: white;
+  box-shadow: none;
 }
 .recomendedJobs {
   cursor: pointer;
