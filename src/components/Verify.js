@@ -7,7 +7,7 @@ import { TOKEN } from "../ReduxStore/ActionTypes/actionTypes";
 import { connect } from "react-redux";
 import { userLoginAction } from "../ReduxStore/Actions/UserLoginAction";
 
-const header = {
+const headers = {
   "x-api-key": " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
 };
 
@@ -36,7 +36,7 @@ class Verify extends Component {
           countryCode,
           mobileNumber,
         },
-        { headers: header }
+        { headers }
       )
       .then((res) => {});
   };
@@ -56,19 +56,19 @@ class Verify extends Component {
           mobileNumber,
           otp_input: this.state.otp,
         },
-        { headers: header }
+        { headers }
       )
       .then((Response) => {
         if (Response.data.type === "success") {
           axios
             .get("/stskFmsApi/userLogin/getByMob/" + mobileNumber, {
-              headers: header,
+              headers,
             })
             .then((Response) => {
               if (Response.data.success === 1) {
                 axios
                   .get("/stskFmsApi/jobseeker/getByMob/" + mobileNumber, {
-                    headers: header,
+                    headers,
                   })
                   .then((res) => {
                     if (res.data.success === 1) {

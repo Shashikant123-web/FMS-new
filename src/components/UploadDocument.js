@@ -18,7 +18,6 @@ const config = {
 class UploadDocument extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       image: null,
       mobileNumber: this.props.details.mobileNumber,
@@ -34,8 +33,6 @@ class UploadDocument extends Component {
         config
       )
       .then((res) => {
-        console.log(res.data.data.id);
-        console.log(res.data.data);
         this.setState({
           details: res.data.data,
           userId: res.data.data.id,
