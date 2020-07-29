@@ -25,14 +25,6 @@ class Register extends Component {
     conformPwd: "",
     error: "",
   };
-  // componentDidMount() {
-  //   this.setState({
-  //     userRoles: {
-  //       id: this.props.match.params.id,
-  //       name: this.props.match.params.name,
-  //     },
-  //   });
-  // }
   handleVisibility = () => {
     this.setState({
       visibility: !this.state.visibility,
@@ -132,7 +124,7 @@ class Register extends Component {
                   person
                 </i>
                 <input
-                  id="icon_prefix"
+                  id="icon_prefixx"
                   type="email"
                   size="30"
                   placeholder="User Id/ Mail Id"
@@ -145,8 +137,7 @@ class Register extends Component {
                   lock
                 </i>
                 <input
-                  id="icon_prefixs"
-                  style={{ width: "242px" }}
+                  id="icon_prefixx"
                   type={visibility ? "text" : "password"}
                   size="30"
                   placeholder="Password"
@@ -179,7 +170,7 @@ class Register extends Component {
                   lock
                 </i>
                 <input
-                  id="icon_prefixs"
+                  id="icon_prefixx"
                   style={{ width: "242px" }}
                   type={visibility2 ? "text" : "password"}
                   size="30"

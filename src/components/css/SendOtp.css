@@ -205,9 +205,9 @@ button:enabled {
 }
 #countries {
   width: 26%;
-  margin-left: -194px;
+  margin-left: -205px;
   position: relative;
-  top: -55px;
+  top: -51px;
 }
 #button1 {
   margin-top: -3%;
@@ -223,6 +223,8 @@ button:enabled {
   font-family: "Lato";
   letter-spacing: 1px;
   color: #707070;
+  border: none;
+  margin-top: -2px;
 }
 /* #sendotpicon {
     color: gray;
@@ -249,6 +251,7 @@ button:enabled {
     background: url("../Images/Background.png");
     background-repeat: no-repeat;
     background-size: cover;
+    height: auto;
   }
 }
 /*  mobile display */
@@ -257,6 +260,7 @@ button:enabled {
     background: url("../Images/Background2.png");
     background-repeat: no-repeat;
     background-size: cover;
+    height: auto;
   }
 }
 @media only screen and (max-width: 368px) {
@@ -265,5 +269,6 @@ button:enabled {
   #main {
     width: 340px;
     margin-left: 10px;
+    height: 451px;
   }
 }

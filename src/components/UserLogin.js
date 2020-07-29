@@ -222,7 +222,6 @@ class UserLogin extends Component {
               </div>
               <strong className="center red-text">{this.state.error}</strong>
               <br></br>
-
               {loading && loading ? (
                 <button id="UserLoginButton">
                   {loading && <i className="fa fa-spinner fa-spin"></i>}

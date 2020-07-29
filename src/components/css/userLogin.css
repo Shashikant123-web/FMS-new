@@ -20,6 +20,7 @@
 #forgot {
   cursor: pointer;
   color: lightseagreen;
+  letter-spacing: 1px;
 }
 #text {
   margin-left: 90px;
@@ -44,7 +45,6 @@
   color: #707070;
   border: none;
   border-radius: 11px;
-  background: white;
 }
 
 #icon_prefixx::placeholder {
@@ -68,21 +68,21 @@
 #input-type4 {
   text-decoration: none;
   width: 288px;
-  margin-top: -4px;
   outline: none;
   border: none;
+  margin-top: 4px;
 }
 
 #iconn {
   color: rgb(189, 180, 180);
-  font-size: 21px;
+  font-size: 20px;
 }
 #frm {
   margin-top: -23px;
   margin-left: -5px;
 }
 #center {
-  margin-top: -12px;
+  margin-top: -10px;
 }
 #text {
   color: gray;

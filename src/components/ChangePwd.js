@@ -102,7 +102,7 @@ class ChangePwd extends Component {
                   lock
                 </i>
                 <input
-                  id="icon_prefix"
+                  id="icon_prefixx"
                   type={visibility ? "text" : "password"}
                   required
                   value={this.state.password}
@@ -134,7 +134,7 @@ class ChangePwd extends Component {
                   lock
                 </i>
                 <input
-                  id="icon_prefix"
+                  id="icon_prefixx"
                   type={visibility2 ? "text" : "password"}
                   required
                   value={this.state.confirmPassword}
@@ -157,10 +157,9 @@ class ChangePwd extends Component {
                     visibility_off
                   </i>
                 )}
-                <br></br>
-                <strong className="red-text center">{this.state.error}</strong>
-                <br></br>
               </div>
+              <br></br>
+              <p className="red-text center">{this.state.error}</p>
               {loading && loading ? (
                 <button id="input-type4">
                   {loading && <i className="fa fa-spinner fa-spin"></i>}
