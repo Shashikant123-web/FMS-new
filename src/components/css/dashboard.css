@@ -242,3 +242,8 @@ nav .nav-wrapper {
   /* margin-left: 55px; */
   padding: 3px;
 }
+nav .input-field {
+  margin: 0;
+  height: 100%;
+  border: none;
+}

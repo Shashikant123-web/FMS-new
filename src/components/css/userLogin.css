@@ -35,9 +35,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-#icon_prefixx {
+#icon_prefixx,
+#input_UserDetails {
   height: 38px;
-  width: 242px;
+
   margin-left: 43px;
   font-size: 15px;
   font-family: "Lato";
@@ -45,6 +46,14 @@
   color: #707070;
   border: none;
   border-radius: 11px;
+}
+#icon_prefixx {
+  margin-left: 43px;
+  width: 242px;
+}
+#input_UserDetails {
+  margin-left: 20px;
+  width: 80%;
 }
 
 #icon_prefixx::placeholder {
@@ -116,7 +125,7 @@
 
 #UserLoginButton {
   width: 291px;
-  margin-top: 6px;
+  margin-top: 17px;
   outline: none;
   border: none;
 }

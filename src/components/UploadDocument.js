@@ -23,6 +23,7 @@ class UploadDocument extends Component {
       mobileNumber: this.props.details.mobileNumber,
       userId: "",
       details: {},
+      docName: "",
       // docId:''
     };
   }
@@ -71,12 +72,13 @@ class UploadDocument extends Component {
       })
       .catch((err) => console.log(err));
   };
-  handleChange = (e) => {
+  handleResume = (e) => {
     console.log(e);
     console.log(e.target.files[0]);
     console.log(e.target.files[0].name);
     this.setState({
       image: e.target.files[0],
+      docName: e.target.files[0].name,
     });
   };
   render() {
@@ -97,7 +99,7 @@ class UploadDocument extends Component {
             id="embedpollfileinput"
             name="image"
             accept="images.jpeg"
-            onChange={this.handleChange}
+            onChange={this.handleResume}
           />
 
           <label
@@ -108,6 +110,7 @@ class UploadDocument extends Component {
             <img src={file} id="fileimg" />
             <span id="doc">Upload Resume</span>
           </label>
+          <p>{this.state.docName}</p>
         </Form.Field>
         <Button type="submit">Submit</Button>
       </Form>

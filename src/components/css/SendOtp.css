@@ -207,7 +207,7 @@ button:enabled {
   width: 26%;
   margin-left: -205px;
   position: relative;
-  top: -51px;
+  top: -52px;
 }
 #button1 {
   margin-top: -3%;
@@ -269,6 +269,6 @@ button:enabled {
   #main {
     width: 340px;
     margin-left: 10px;
-    height: 451px;
+    height: 45px;
   }
 }

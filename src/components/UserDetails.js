@@ -451,16 +451,18 @@ class UserDetails extends Component {
             <div className="row" id="section-1">
               <div className="col-md-6">
                 <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter Full Name *"
-                    name="name"
-                    required
-                    onChange={this.handleChange}
-                    pattern="[A-Za-z\\s]*"
-                    title="only alphabetical values are allowed"
-                  />
+                  <div className="input-field">
+                    <input
+                      type="text"
+                      id="input_UserDetails"
+                      placeholder="Enter Full Name *"
+                      name="name"
+                      required
+                      onChange={this.handleChange}
+                      pattern="[A-Za-z\\s]*"
+                      title="only alphabetical values are allowed"
+                    />
+                  </div>
                 </div>
                 <div class="form-group">
                   <input
@@ -549,15 +551,17 @@ class UserDetails extends Component {
               </div>
               <div className="col-md-6">
                 <div className="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Phone Number *"
-                    type="tel"
-                    name="mob"
-                    required
-                    value={mobileNumber}
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails"
+                      type="text"
+                      placeholder="Phone Number *"
+                      type="tel"
+                      name="mob"
+                      required
+                      value={mobileNumber}
+                    />
+                  </div>
                 </div>
                 <div className="form-group">
                   <input
