@@ -505,7 +505,7 @@ class Dashboard extends Component {
                 </p>
               </div>
               <div className="card-action">
-                <p className="left">{job.createdAt}</p>
+                <h6 className="left">{job.createdAt}</h6>
                 <i
                   className="material-icons teal-text right"
                   style={{ cursor: "pointer" }}
