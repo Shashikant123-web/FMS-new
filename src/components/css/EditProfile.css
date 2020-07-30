@@ -39,6 +39,14 @@
   top: -4px;
   margin-left: 30px;
 }
+#removes {
+  margin-top: -66px;
+}
+
+/* #forms-content2 {
+  margin-top: 87px;
+} */
+
 /* @import url(
   https://fonts.googleapis.com/css?family=Open+Sans:400,
   300,
@@ -109,6 +117,18 @@
   display: none;
 }
 #section-5 {
+  display: none;
+}
+#section-9 {
+  display: none;
+}
+#section-10 {
+  display: none;
+}
+#section-11 {
+  display: none;
+}
+#section-12 {
   display: none;
 }
 #update {
@@ -219,13 +239,14 @@ a:not([href]) {
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
-@media screen and (min-width: 360px) {
-  .form-content1 {
-    margin-top: 0px;
-  }
+.form-content5 {
+  font-family: lato;
+  background-color: #ffff;
+  padding: 5%;
+  margin-bottom: 2%;
+  overflow-y: scroll;
+  margin-top: 87px;
+  height: 300px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
-/* @media screen and (min-width: 360px) {
-  #remove {
-    margin-top: -75px;
-  }
-} */

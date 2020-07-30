@@ -10,7 +10,7 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import { connect } from "react-redux";
 import NavbarTop from "../NavbarJobseeker/NavbarTop";
 import EditProfile from "../Editprofile";
-import $ from "jquery";
+import $, { isPlainObject } from "jquery";
 
 import { HIDE_JOBS } from "../../ReduxStore/ActionTypes/actionTypes";
 import {
@@ -19,9 +19,10 @@ import {
   handleApply,
   handleSearch,
 } from "../../ReduxStore/Actions/RecomendedJobsAction";
+import { Button } from "react-bootstrap";
 
-const headers = {
-  "x-api-key": "$2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
+const header = {
+  "x-api-key": " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
 };
 
 export class RecomendedJobs extends Component {
@@ -66,28 +67,33 @@ export class RecomendedJobs extends Component {
       return <option value={type.name} />;
     });
   }
-  handleRadio = (e) => {
-    // Get the modal
+
+  // handleRadio = (e) => {
+  //   var modal = document.getElementById("myModal");
+
+  //   var btn = document.getElementById("myBtn");
+
+  //   var span = document.getElementsByClassName("close")[0];
+
+  //   btn.onclick = function() {
+  //     modal.style.display = "block";
+  //   };
+
+  //   span.onclick = function() {
+  //     modal.style.display = "none";
+  //   };
+
+  //   window.onclick = function(event) {
+  //     if (event.target == modal) {
+  //       modal.style.display = "none";
+  //     }
+  //   };
+  // };
+  ShowHideDiv = (event) => {
+    var chkYes = document.getElementById("chkYes");
     var modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks the button, open the modal
-    btn.onclick = function() {
-      modal.style.display = "block";
-    };
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-      modal.style.display = "none";
-    };
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
+    modal.style.display = chkYes.checked ? "block" : "none";
+    window.onClick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
       }
@@ -102,9 +108,81 @@ export class RecomendedJobs extends Component {
     this.setState({
       id,
     });
+    // this.props.handleSave({ id }, { userId: 12 });
+    // this.props.handleSave(this.state);
+
     const time = setTimeout(() => {
       this.props.handleSave(this.state);
     }, 50);
+  };
+  // handleUnsave = (id) => {
+  //   this.setState({
+  //     id,
+  //   });
+  //   const time2 = setTimeout(() => {
+  //     this.props.handleUnsave(this.state);
+  //   }, 50);
+
+  //   axios
+  //     .post("/stskFmsApi/jobseeker/unSaveJobs/18/51", {
+  //       headers: header,
+  //     })
+  //     .then((res) => {
+  //       console.log(res.data.data);
+  //       console.log(res.data);
+  //       console.log(res);
+  //     });
+  // };
+
+  handleApply = (id) => {
+    this.setState({
+      id,
+    });
+    const time3 = setTimeout(() => {
+      this.props.handleApply(this.state);
+    }, 50);
+  };
+  handlepopupopen() {
+    // document.getElementById("popupopen").Style.display = "block";
+    // window.open("./editprofile");
+    var popup = document.getElementById("popupopen");
+    popup.classList.toggle("show");
+  }
+  handleSave = (id) => {
+    axios
+      .post(
+        "/stskFmsApi/jobseeker/saveJobs",
+        {
+          id: this.state.userId,
+          jobs: [
+            {
+              id: id,
+            },
+          ],
+        },
+        { headers: header }
+      )
+      .then((res) => {
+        console.log(res.data);
+        console.log(res);
+      });
+
+    // {
+    //   this.state.saved.map((savedId) => {
+    //     var flag = document.getElementById(id).innerHTML;
+
+    //     if (flag === "turned_in_not" && id == savedId) {
+    //       var a = (document.getElementById(id).innerHTML = "turned_in");
+    //       flag = 1;
+    //     } else {
+    //       var a = (document.getElementById(id).innerHTML = "turned_in_not");
+    //     }
+    //   });
+    // }
+    //   console.log(id);
+    //   this.setState({
+    //     saved: [...this.state.saved, id],
+    //   });
   };
   handleUnsave = (id) => {
     // this.setState({
@@ -132,25 +210,12 @@ export class RecomendedJobs extends Component {
       });
   };
 
-  handleApply = (id) => {
-    this.setState({
-      id,
-    });
-    const time3 = setTimeout(() => {
-      this.props.handleApply(this.state);
-    }, 50);
-  };
-  handlepopupopen() {
-    // document.getElementById("popupopen").Style.display = "block";
-    // window.open("./editprofile");
-    var popup = document.getElementById("popupopen");
-    popup.classList.toggle("show");
-  }
-
   render() {
     if (this.props.token.SendOtp.token !== true) {
       return <Redirect to="/userLogin" />;
     }
+    console.log(this.props.dashboard.payLoad.details.id);
+    console.log(this.state);
     const {
       payLoad: { userId },
       recomendedJobs,
@@ -379,8 +444,9 @@ export class RecomendedJobs extends Component {
                                     type="radio"
                                     data-toggle="modal"
                                     data-target="#squarespaceModal"
-                                    // id="ra"
-                                    id="myBtn"
+                                    //id="myBtn"
+                                    id="chkYes"
+                                    onclick="ShowHideDiv()"
                                   />
                                   <span id="label">Yes</span>
                                 </label>
@@ -390,9 +456,9 @@ export class RecomendedJobs extends Component {
                                   <input
                                     name="wantedit"
                                     value="false"
-                                    // onClick={this.handleRadio}
+                                    id="chkNo"
                                     type="radio"
-                                    // id="ra"
+                                    // onclick="ShowHideDiv()"
                                   />
                                   <span id="label">No</span>
                                 </label>
@@ -402,7 +468,7 @@ export class RecomendedJobs extends Component {
                         </div>
 
                         <div className="center" id="saveandapply">
-                          {job.isSaved ? (
+                          {/* {job.isSaved ? (
                             <a
                               className="btn center"
                               id="savebtn"
@@ -422,7 +488,7 @@ export class RecomendedJobs extends Component {
                               </i>
                               save
                             </a>
-                          )}
+                          )} */}
                           {job.isApplied ? (
                             <a className="btn center" id="applybtn">
                               Applied
@@ -454,7 +520,7 @@ export class RecomendedJobs extends Component {
                 <div className="card-action">
                   <strong className="left">{job.createdAt}</strong>
                   <div className="right">
-                    {job.isSaved ? (
+                    {/* {job.isSaved ? (
                       <strong
                         className="right"
                         onClick={() => this.handleUnsave(job.id)}
@@ -467,7 +533,7 @@ export class RecomendedJobs extends Component {
                         </i>
                         saved
                       </strong>
-                    ) : null}
+                    ) : null} */}
                     {job.isSaved ? null : (
                       <strong
                         className="right"
@@ -482,6 +548,9 @@ export class RecomendedJobs extends Component {
                         save
                       </strong>
                     )}
+                    {/* <Button type="button" onClick={this.handleUnsave}>
+                      Unsave
+                    </Button> */}
                     <strong
                       className="right"
                       onClick={() => {
