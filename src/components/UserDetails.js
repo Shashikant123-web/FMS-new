@@ -363,13 +363,9 @@ class UserDetails extends Component {
           }
         )
         .then((response) => {
-          console.log(response.data);
+          console.log(response);
           if (response.data.success === 1) {
-            console.log(response);
-            console.log(response.data.data);
-
             let formData = new FormData();
-
             formData.append("file", this.state.image);
             axios
               .post(
@@ -378,11 +374,6 @@ class UserDetails extends Component {
                 { headers }
               )
               .then((res) => {
-                console.log(res);
-                console.log(res.data);
-                this.setState({
-                  // docId:res.data.data
-                });
                 axios
                   .get(
                     "/stskFmsApi/jobseeker/getByMob/" +
@@ -398,8 +389,6 @@ class UserDetails extends Component {
 
                 const timer1 = setTimeout(() => {
                   if (res.data.success === 1) {
-                    console.log(res);
-                    console.log(res.data);
                     this.props.token();
                     this.props.userLoginAction(this.state);
                     const tm = setTimeout(() => {
