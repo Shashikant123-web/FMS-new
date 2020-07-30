@@ -147,7 +147,7 @@ class UserDetails extends Component {
       .get(
         "/stskFmsApi/userLogin/getByMob/" + this.props.details.mobileNumber,
         {
-          headers: header,
+          headers,
         }
       )
       .then((res) => {
@@ -449,7 +449,7 @@ class UserDetails extends Component {
 
   render() {
     const { mobileNumber, email } = this.props.details;
-    console.log(this.state.jobUpdate);
+    console.log(this.props);
     console.log(this.state);
     const { selectedValue, loading } = this.state;
     return (

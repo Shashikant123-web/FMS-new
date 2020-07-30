@@ -21,7 +21,7 @@ import {
 } from "../../ReduxStore/Actions/RecomendedJobsAction";
 import { Button } from "react-bootstrap";
 
-const header = {
+const headers = {
   "x-api-key": " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
 };
 
@@ -160,7 +160,7 @@ export class RecomendedJobs extends Component {
             },
           ],
         },
-        { headers: header }
+        { headers }
       )
       .then((res) => {
         console.log(res.data);

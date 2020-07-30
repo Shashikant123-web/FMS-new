@@ -1808,3 +1808,4 @@ class Editprofile extends Component {
 const mapStateToProps = (state) => {
   return { editProfile: state.userLogin.userLogin };
 };
+export default connect(mapStateToProps)(Editprofile);

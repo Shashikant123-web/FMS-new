@@ -7,7 +7,7 @@ import $ from "jquery";
 import jQuery from "jquery";
 import { connect } from "react-redux";
 
-const header = {
+const headers = {
   "x-api-key": " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
 };
 
@@ -84,12 +84,19 @@ class Register extends Component {
               id: this.state.userRoles.id,
             },
           },
-          { headers: header }
+          { headers }
         )
-        .then((response) => {
-          this.props.history.push({
-            pathname: "/userDetails",
-          });
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.success === 1) {
+            this.props.history.push({
+              pathname: "/userDetails",
+            });
+          } else {
+            this.setState({
+              error: "please try again",
+            });
+          }
         })
         .catch((error) => {
           console.log(error);
