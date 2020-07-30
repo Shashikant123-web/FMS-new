@@ -67,9 +67,9 @@ class Register extends Component {
 
     if (password !== conformPwd) {
       this.setState({
+        error: "Password and conformPassword mis-match",
         password: "",
         conformPwd: "",
-        error: "Password and conformPassword mis-match",
       });
     } else {
       this.setState({ error: "" });
@@ -98,7 +98,7 @@ class Register extends Component {
   };
 
   render() {
-    const { visibility, visibility2 } = this.state;
+    const { visibility, visibility2, password, conformPwd } = this.state;
     return (
       <div id="body">
         <div className="row" id="main1">
@@ -141,6 +141,7 @@ class Register extends Component {
                   type={visibility ? "text" : "password"}
                   size="30"
                   placeholder="Password"
+                  value={password}
                   required
                   name="pass"
                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
@@ -175,6 +176,7 @@ class Register extends Component {
                   type={visibility2 ? "text" : "password"}
                   size="30"
                   placeholder="Password"
+                  value={conformPwd}
                   required
                   name="pass"
                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"

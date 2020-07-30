@@ -196,7 +196,7 @@ class Dashboard extends Component {
     this.setState({
       LoggedIn: false,
     });
-    this.props.history.push("/userLogin");
+    this.props.history.push("/");
     localStorage.removeItem("state");
   };
 

@@ -48,68 +48,68 @@ class Verify extends Component {
       error: "",
       loading: true,
     });
+    // axios
+    //   .post(
+    //     "/stskFmsApi/otpServices/verifyOtpBySMS",
+    //     {
+    //       countryCode: 91,
+    //       mobileNumber,
+    //       otp_input: this.state.otp,
+    //     },
+    //     { headers }
+    //   )
+    //   .then((Response) => {
+    //     if (Response.data.type === "success") {
     axios
-      .post(
-        "/stskFmsApi/otpServices/verifyOtpBySMS",
-        {
-          countryCode: 91,
-          mobileNumber,
-          otp_input: this.state.otp,
-        },
-        { headers }
-      )
+      .get("/stskFmsApi/userLogin/getByMob/" + mobileNumber, {
+        headers,
+      })
       .then((Response) => {
-        if (Response.data.type === "success") {
+        if (Response.data.success === 1) {
           axios
-            .get("/stskFmsApi/userLogin/getByMob/" + mobileNumber, {
+            .get("/stskFmsApi/jobseeker/getByMob/" + mobileNumber, {
               headers,
             })
-            .then((Response) => {
-              if (Response.data.success === 1) {
-                axios
-                  .get("/stskFmsApi/jobseeker/getByMob/" + mobileNumber, {
-                    headers,
-                  })
-                  .then((res) => {
-                    if (res.data.success === 1) {
-                      this.setState({
-                        userId: res.data.data.id,
-                        details: res.data.data,
-                      });
-                      const time = setTimeout(() => {
-                        this.props.userLoginAction(this.state);
-                      }, 500);
-                      this.props.history.push({
-                        pathname: "/dashboard",
-                      });
-                      this.props.token();
-                    } else {
-                      this.props.userLoginAction(this.state);
-                      this.props.history.push({
-                        pathname: "/userDetails",
-                      });
-                    }
-                  });
+            .then((res) => {
+              if (res.data.success === 1) {
+                this.setState({
+                  userId: res.data.data.id,
+                  details: res.data.data,
+                });
+                const time = setTimeout(() => {
+                  this.props.userLoginAction(this.state);
+                }, 500);
+                this.props.history.push({
+                  pathname: "/dashboard",
+                });
+                this.props.token();
               } else {
                 this.props.userLoginAction(this.state);
                 this.props.history.push({
-                  pathname: "/preregister",
+                  pathname: "/userDetails",
                 });
               }
-            })
-            .catch((error) => {
-              this.setState({
-                error,
-              });
             });
         } else {
-          this.setState({
-            loading: false,
-            otp: "",
-            error: "Otp-mismatch",
+          this.props.userLoginAction(this.state);
+          this.props.history.push({
+            pathname: "/preregister",
           });
         }
+      })
+      .catch((error) => {
+        this.setState({
+          error,
+        });
       });
+    //   } else {
+    //     this.setState({
+    //       loading: false,
+    //       otp: "",
+    //       error: "Otp-mismatch",
+    //     });
+    //   }
+    // });
   };
   render() {
     const { loading } = this.state;
@@ -129,7 +129,7 @@ class Verify extends Component {
             </h4>
             <form id="frm" onSubmit={this.handleSubmit}>
               <strong id="enterHere">Enter Otp Here</strong>
-              <div className="input-field">
+              <div className="">
                 <OtpInput
                   inputStyle={{
                     width: "3rem",

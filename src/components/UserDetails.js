@@ -14,10 +14,15 @@ import file from "./Images/file.png";
 import { Checkbox } from "semantic-ui-react";
 
 import { connect } from "react-redux";
+import { userLoginAction } from "../ReduxStore/Actions/UserLoginAction";
+import { TOKEN } from "../ReduxStore/ActionTypes/actionTypes";
 
 // import { Icon, Popup, Grid } from 'semantic-ui-react'
 
 const header = {
+  "x-api-key": " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
+};
+const headers = {
   "x-api-key": " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
 };
 const formValid = ({ formErrors, ...rest }) => {
@@ -34,6 +39,7 @@ class UserDetails extends Component {
     super(props);
 
     this.state = {
+      loading: false,
       profileimage: null,
       profileimagedocId: "",
       profileimagepath: "",
@@ -73,6 +79,9 @@ class UserDetails extends Component {
       jobs: [],
       Updates: ["Send Mail", "SMS", "Both", "None"],
       YOP: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+      docName: "",
+      image: null,
+      details: {},
       formErrors: {
         profileimage: null,
         name: "",
@@ -149,6 +158,12 @@ class UserDetails extends Component {
         });
       });
   }
+  handleResume = (e) => {
+    this.setState({
+      image: e.target.files[0],
+      docName: e.target.files[0].name,
+    });
+  };
   // for handle jobtypes
   handleChange1Arg = (selectedvalue) => {
     var i = selectedvalue.length;
@@ -305,8 +320,9 @@ class UserDetails extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
-
+    this.setState({
+      loading: true,
+    });
     if (this.state.check === true) {
       axios
         .post(
@@ -343,25 +359,56 @@ class UserDetails extends Component {
             jobTypes: this.state.jobTypes,
           },
           {
-            headers: {
-              "x-api-key":
-                " $2a$10$AIUufK8g6EFhBcumRRV2L.AQNz3Bjp7oDQVFiO5JJMBFZQ6x2/R/2",
-            },
+            headers,
           }
         )
-
         .then((response) => {
           console.log(response.data);
           if (response.data.success === 1) {
             console.log(response);
-            console.log(response.data);
+            console.log(response.data.data);
 
-            this.props.history.push({
-              pathname: "/uploadDocument",
-              state: {
-                mobileNumber: this.state,
-              },
-            });
+            let formData = new FormData();
+
+            formData.append("file", this.state.image);
+            axios
+              .post(
+                "/stskFmsApi/jobseekerdoc/createDoc/" + response.data.data,
+                formData,
+                { headers }
+              )
+              .then((res) => {
+                console.log(res);
+                console.log(res.data);
+                this.setState({
+                  // docId:res.data.data
+                });
+                axios
+                  .get(
+                    "/stskFmsApi/jobseeker/getByMob/" +
+                      this.props.details.mobileNumber,
+                    { headers }
+                  )
+                  .then((res) => {
+                    this.setState({
+                      details: res.data.data,
+                      userId: res.data.data.id,
+                    });
+                  });
+
+                const timer1 = setTimeout(() => {
+                  if (res.data.success === 1) {
+                    console.log(res);
+                    console.log(res.data);
+                    this.props.token();
+                    this.props.userLoginAction(this.state);
+                    const tm = setTimeout(() => {
+                      this.props.history.push("/dashboard");
+                    }, 50);
+                  }
+                }, 1000);
+              })
+              .catch((err) => console.log(err));
           }
         })
         .catch((error) => {
@@ -415,7 +462,7 @@ class UserDetails extends Component {
     const { mobileNumber, email } = this.props.details;
     console.log(this.state.jobUpdate);
     console.log(this.state);
-    const { selectedValue } = this.state;
+    const { selectedValue, loading } = this.state;
     return (
       <div class="container register-form">
         <div class="forms z-depth-1" style={{ marginTop: "50px" }}>
@@ -872,13 +919,40 @@ class UserDetails extends Component {
 
                 {/* </div> */}
               </div>
-              <button type="submit" onClick={this.handleSubmit}>
-                Submit
-              </button>
+
+              <input
+                type="file"
+                class="inputfile center"
+                id="embedpollfileinput"
+                name="image"
+                accept="images.jpeg"
+                onChange={this.handleResume}
+              />
+
+              <label
+                for="embedpollfileinput"
+                className="ui huge white right floated button"
+                id="hugewhite"
+              >
+                <img src={file} id="fileimg" />
+                <span id="doc">Upload Resume</span>
+              </label>
+              <p>{this.state.docName}</p>
+              <br></br>
+              {loading && loading ? (
+                <button id="UserLoginButton" className="center">
+                  {loading && <i className="fa fa-spinner fa-spin"></i>}
+                </button>
+              ) : (
+                <button
+                  id="UserLoginButton"
+                  className="center"
+                  onClick={this.handleSubmit}
+                >
+                  Submit
+                </button>
+              )}
             </div>
-            {/* </form> */}
-            {/* <button type="button"  onSubmit={this.handleSubmit}>Submit</button> */}
-            {/* </form> */}
           </div>
         </div>
       </div>
@@ -890,5 +964,11 @@ const mapStateToProps = (state) => {
     details: state.userLogin.userLogin,
   };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    userLoginAction: (UserLogin) => dispatch(userLoginAction(UserLogin)),
+    token: () => dispatch({ type: TOKEN }),
+  };
+};
 
-export default connect(mapStateToProps)(UserDetails);
+export default connect(mapStateToProps, mapDispatchToProps)(UserDetails);

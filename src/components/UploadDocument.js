@@ -104,7 +104,7 @@ class UploadDocument extends Component {
 
           <label
             for="embedpollfileinput"
-            class="ui huge white right floated button"
+            className="ui huge white right floated button"
             id="hugewhite"
           >
             <img src={file} id="fileimg" />

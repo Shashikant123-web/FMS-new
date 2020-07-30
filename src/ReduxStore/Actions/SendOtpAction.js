@@ -7,15 +7,14 @@ const header = {
 
 export const createProject = (project) => {
   return (dispatch, getState) => {
-    //make api call
-    axios
-      .post("/stskFmsApi/otpServices/sendOtpBySMS", project, {
-        headers: header,
-      })
-      .then((Response) => {})
-      .catch((error) => {
-        console.log(error);
-      });
+    // axios
+    //   .post("/stskFmsApi/otpServices/sendOtpBySMS", project, {
+    //     headers: header,
+    //   })
+    //   .then((Response) => {})
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
     dispatch({
       type: SEND_OTP,
       project,
