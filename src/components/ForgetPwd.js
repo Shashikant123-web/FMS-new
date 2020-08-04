@@ -228,7 +228,7 @@ class ForgetPwd extends Component {
                     {this.state.errorOtp}
                   </strong>
 
-                  <button id="input-forgot">Send otp</button>
+                  <button id="sendotpbtn">Send otp</button>
                 </form>
               </div>
             )}

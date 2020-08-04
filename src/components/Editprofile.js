@@ -114,11 +114,13 @@ class Editprofile extends Component {
         this.setState({
           docId: res.data.data,
         });
-        const names1 = this.state.docId.map((namesss) => {
-          return namesss.docId;
-        });
-        console.log(names1);
-        console.log(Math.max(...names1));
+        const names1 =
+          this.state.docId &&
+          this.state.docId.map((namesss) => {
+            return namesss.docId;
+          });
+        // console.log(names1);
+        // console.log(Math.max(...names1));
         var latdocId = names1;
         var latestdocId = Math.max(...latdocId);
         console.log(latestdocId);

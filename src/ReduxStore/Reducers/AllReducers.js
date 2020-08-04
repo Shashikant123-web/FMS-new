@@ -11,11 +11,14 @@ import {
   HIDE_JOBS,
   TOKEN,
   SEARCHED_JOBS,
+  PROFILE_PATH,
 } from "../ActionTypes/actionTypes";
 
 const intialState = {
   token: false,
   text: "",
+  path: "",
+  filePath: "",
   searchedJobs: [],
   SendOtp: {
     countryCode: "91",
@@ -150,6 +153,13 @@ const sendotpReducer = (state = intialState, action) => {
         ...state,
         text: action.text,
         searchedJobs: action.payLoad,
+      };
+    case PROFILE_PATH:
+      return {
+        ...state,
+
+        path: action,
+        fileName: action,
       };
   }
   return state;

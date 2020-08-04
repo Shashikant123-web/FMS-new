@@ -129,6 +129,7 @@ class Verify extends Component {
             </h4>
             <form id="frm" onSubmit={this.handleSubmit}>
               <strong id="enterHere">Enter Otp Here</strong>
+              <br></br>
               <div className="">
                 <OtpInput
                   inputStyle={{

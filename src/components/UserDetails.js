@@ -79,7 +79,7 @@ class UserDetails extends Component {
       jobs: [],
       Updates: ["Send Mail", "SMS", "Both", "None"],
       YOP: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
-      docName: "",
+      docName: "Upload document",
       image: null,
       details: {},
       formErrors: {
@@ -206,6 +206,26 @@ class UserDetails extends Component {
     } else {
       document.getElementById("section-5").style.display = "none";
     }
+    if (e.target.value == "false") {
+      document.getElementById("section-9").style.display = "block";
+    } else {
+      document.getElementById("section-9").style.display = "none";
+    }
+    if (e.target.value == "true") {
+      document.getElementById("section-10").style.display = "none";
+    } else {
+      document.getElementById("section-10").style.display = "none";
+    }
+    if (e.target.value == "true") {
+      document.getElementById("section-11").style.display = "none";
+    } else {
+      document.getElementById("section-11").style.display = "none";
+    }
+    if (e.target.value == "false") {
+      document.getElementById("section-12").style.display = "none";
+    } else {
+      document.getElementById("section-12").style.display = "none";
+    }
     this.setState({
       fresher: e.target.value,
     });
@@ -227,6 +247,21 @@ class UserDetails extends Component {
     } else {
       document.getElementById("section-4").style.display = "none";
     }
+    if (e.target.value == "true") {
+      document.getElementById("section-10").style.display = "flex";
+    } else {
+      document.getElementById("section-10").style.display = "none";
+    }
+    if (e.target.value == "false") {
+      document.getElementById("section-12").style.display = "flex";
+    } else {
+      document.getElementById("section-12").style.display = "none";
+    }
+    if (e.target.value == "false") {
+      document.getElementById("section-11").style.display = "none";
+    } else {
+      document.getElementById("section-11").style.display = "none";
+    }
     this.setState({
       working: e.target.value,
     });
@@ -237,6 +272,11 @@ class UserDetails extends Component {
       document.getElementById("section-4").style.display = "flex";
     } else {
       document.getElementById("section-4").style.display = "none";
+    }
+    if (e.target.value == "true") {
+      document.getElementById("section-11").style.display = "flex";
+    } else {
+      document.getElementById("section-11").style.display = "none";
     }
     this.setState({
       noticePeriod: e.target.value,
@@ -282,7 +322,7 @@ class UserDetails extends Component {
           });
         })
         .catch((err) => console.log(err));
-    }, 3000);
+    }, 300);
     const timer1 = setTimeout(() => {
       axios
         .get(
@@ -297,7 +337,7 @@ class UserDetails extends Component {
           });
         })
         .catch((err) => console.log(err));
-    }, 4000);
+    }, 1000);
   };
   handleChange = (e) => {
     // this.setState({update : e.target.value});
@@ -454,7 +494,10 @@ class UserDetails extends Component {
     const { selectedValue, loading } = this.state;
     return (
       <div class="container register-form">
-        <div class="forms z-depth-1" style={{ marginTop: "50px" }}>
+        <div
+          class="forms z-depth-1 hide-on-small-only"
+          style={{ marginTop: "20px" }}
+        >
           <div class="note">
             <div class="profile-header-container">
               <h4 class="title">Job Seeker</h4>
@@ -469,7 +512,7 @@ class UserDetails extends Component {
 
                 <div class="rank-label-container">
                   {/* <i className="material-icons grey-text large" id="pro1">
-                    account_circle
+                    account_circlehide-on-small-only
                   </i> */}
                   <input
                     type="file"
@@ -501,28 +544,34 @@ class UserDetails extends Component {
                   </div>
                 </div>
                 <div class="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter Email *"
-                    type="email"
-                    name="email"
-                    required
-                    value={this.state.email}
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails1"
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter Email *"
+                      type="email"
+                      name="email"
+                      required
+                      value={this.state.email}
+                    />
+                  </div>
                 </div>
                 <div class="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Pan Number *"
-                    type="text"
-                    name="panNum"
-                    required
-                    onChange={this.handleChange}
-                    pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
-                    title="Enter valid pannumber"
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails1"
+                      type="text"
+                      className="form-control"
+                      placeholder="Pan Number *"
+                      type="text"
+                      name="panNum"
+                      required
+                      onChange={this.handleChange}
+                      pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                      title="Enter valid pannumber"
+                    />
+                  </div>
                 </div>
 
                 <Popup
@@ -556,7 +605,7 @@ class UserDetails extends Component {
                 </Popup>
                 {/* <h5  id="valsel"></h5> */}
                 {/* </div> */}
-                <div className="form-group">
+                <div className="form-group" id="frmgrp">
                   <p id="label">Are you fresher?</p>
 
                   <p>
@@ -600,29 +649,35 @@ class UserDetails extends Component {
                   </div>
                 </div>
                 <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Aadhar Card Number *"
-                    type="text"
-                    name="aadharNum"
-                    required
-                    onChange={this.handleChange}
-                    pattern="^\d{4}\d{4}\d{4}$"
-                    title="Addhar Card"
-                    title="4 digit space 4 digit space 4digit"
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails1"
+                      type="text"
+                      className="form-control"
+                      placeholder="Aadhar Card Number *"
+                      type="text"
+                      name="aadharNum"
+                      required
+                      onChange={this.handleChange}
+                      pattern="^\d{4}\d{4}\d{4}$"
+                      title="Addhar Card"
+                      title="4 digit space 4 digit space 4digit"
+                    />
+                  </div>
                 </div>
                 <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Education Qualification *"
-                    type="text"
-                    name="eduQual"
-                    required
-                    onChange={this.handleChange}
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails1"
+                      type="text"
+                      className="form-control"
+                      placeholder="Education Qualification *"
+                      type="text"
+                      name="eduQual"
+                      required
+                      onChange={this.handleChange}
+                    />
+                  </div>
                 </div>
                 <div className="form-group">
                   {/* <input type="text" class="form-control" placeholder="Job Updates *" value=""/> */}
@@ -654,7 +709,7 @@ class UserDetails extends Component {
             {/* start section-2 */}
             <div className="row" id="section-2">
               <div className="col-md-6">
-                <div className="form-group">
+                <div className="form-group" id="frmgrp">
                   <p id="label">Currently working?</p>
 
                   <p>
@@ -687,64 +742,79 @@ class UserDetails extends Component {
             <div className="row" id="section-3">
               <div className="col-md-6">
                 <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Years of Experience *"
-                    name="experience"
-                    pattern="[0-9]*"
-                    title="It should be Numeric"
-                    onChange={this.handleChange}
-                    maxLength="2"
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails1"
+                      type="text"
+                      className="form-control"
+                      placeholder="Years of Experience *"
+                      name="experience"
+                      pattern="[0-9]*"
+                      title="It should be Numeric"
+                      onChange={this.handleChange}
+                      maxLength="2"
+                    />
+                  </div>
                 </div>
                 <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Job Location *"
-                    name="jobLocation"
-                    onChange={this.handleChange}
-                    id="input"
-                    pattern="[A-Za-z\\s]*"
-                    title="only alphabetical values are allowed"
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails1"
+                      type="text"
+                      className="form-control"
+                      placeholder="Job Location *"
+                      name="jobLocation"
+                      onChange={this.handleChange}
+                      id="input"
+                      pattern="[A-Za-z\\s]*"
+                      title="only alphabetical values are allowed"
+                    />
+                  </div>
                 </div>
                 <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Current Location *"
-                    name="currentLocation"
-                    onChange={this.handleChange}
-                    id="input"
-                    pattern="[A-Za-z\\s]*"
-                    title="only alphabetical values are allowed"
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails1"
+                      type="text"
+                      className="form-control"
+                      placeholder="Current Location *"
+                      name="currentLocation"
+                      onChange={this.handleChange}
+                      id="input"
+                      pattern="[A-Za-z\\s]*"
+                      title="only alphabetical values are allowed"
+                    />
+                  </div>
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Enter Current Company Name *"
-                    name="companyName"
-                    onChange={this.handleChange}
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails1"
+                      type="text"
+                      class="form-control"
+                      placeholder="Enter Current Company Name *"
+                      name="companyName"
+                      onChange={this.handleChange}
+                    />
+                  </div>
                 </div>
                 <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Designation *"
-                    name="designation"
-                    onChange={this.handleChange}
-                    pattern="[A-Za-z\\s]*"
-                    title="only alphabetical values are allowed"
-                  />
+                  <div className="input-field">
+                    <input
+                      type="text"
+                      id="input_UserDetails1"
+                      className="form-control"
+                      placeholder="Designation *"
+                      name="designation"
+                      onChange={this.handleChange}
+                      pattern="[A-Za-z\\s]*"
+                      title="only alphabetical values are allowed"
+                    />
+                  </div>
                 </div>
-                <div className="form-group">
+                <div className="form-group" id="frmgrp">
                   <p id="label">Are you serving notice period?</p>
                   <p>
                     <label>
@@ -778,119 +848,141 @@ class UserDetails extends Component {
             <div className="row" id="section-4">
               <div className="col-md-6">
                 <div className="form-group">
-                  <input
-                    className="form-control"
-                    placeholder="Days *"
-                    type="number"
-                    name="noOfDays"
-                    onChange={this.handleChange}
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails1"
+                      className="form-control"
+                      placeholder="Days *"
+                      type="number"
+                      name="noOfDays"
+                      onChange={this.handleChange}
+                    />
+                  </div>
                 </div>
                 <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="UpTo *"
-                    type="number"
-                    name="upTo"
-                    onChange={this.handleChange}
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails1"
+                      type="text"
+                      className="form-control"
+                      placeholder="UpTo *"
+                      type="number"
+                      name="upTo"
+                      onChange={this.handleChange}
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="col-md-6">
-                <div className="form-group">
-                  <p id="label">Is it negotiable?</p>
+                <div className="col-md-6">
+                  <div className="form-group" id="frmgrp">
+                    <p id="label">Is it negotiable?</p>
 
-                  <p>
-                    <label>
-                      <input
-                        name="negotiable"
-                        value="true"
-                        onClick={this.handleRadio3}
-                        type="radio"
-                        id="ra"
-                      />
-                      <span id="label">Yes</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input
-                        name="negotiable"
-                        value="false"
-                        onClick={this.handleRadio3}
-                        type="radio"
-                        id="ra"
-                      />
-                      <span id="label">No</span>
-                    </label>
-                  </p>
+                    <p>
+                      <label>
+                        <input
+                          name="negotiable"
+                          value="true"
+                          onClick={this.handleRadio3}
+                          type="radio"
+                          id="ra"
+                        />
+                        <span id="label">Yes</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input
+                          name="negotiable"
+                          value="false"
+                          onClick={this.handleRadio3}
+                          type="radio"
+                          id="ra"
+                        />
+                        <span id="label">No</span>
+                      </label>
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            {/*end section-4 */}
-            {/*start section-5 */}
-            <div className="row" id="section-5">
-              <div className="col-md-6">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Years of Experience *"
-                    name="experience"
-                    pattern="[0-9]*"
-                    title="It should be Numeric"
-                    onChange={this.handleChange}
-                    maxLength="2"
-                  />
+              {/*end section-4 */}
+              {/*start section-5 */}
+              <div className="row" id="section-5">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        type="text"
+                        id="input_UserDetails1"
+                        className="form-control"
+                        placeholder="Years of Experience *"
+                        name="experience"
+                        pattern="[0-9]*"
+                        title="It should be Numeric"
+                        onChange={this.handleChange}
+                        maxLength="2"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Previous Job Location *"
-                    name="prevjobLocation"
-                    onChange={this.handleChange}
-                    pattern="[A-Za-z\\s]*"
-                    title="only alphabetical values are allowed"
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails1"
+                      type="text"
+                      className="form-control"
+                      placeholder="Previous Job Location *"
+                      name="prevjobLocation"
+                      onChange={this.handleChange}
+                      pattern="[A-Za-z\\s]*"
+                      title="only alphabetical values are allowed"
+                    />
+                  </div>
                 </div>
                 <div class="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Current Location *"
-                    name="currentLocation"
-                    onChange={this.handleChange}
-                    pattern="[A-Za-z\\s]*"
-                    title="only alphabetical values are allowed"
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails1"
+                      type="text"
+                      className="form-control"
+                      placeholder="Current Location *"
+                      name="currentLocation"
+                      onChange={this.handleChange}
+                      pattern="[A-Za-z\\s]*"
+                      title="only alphabetical values are allowed"
+                    />
+                  </div>
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Previous Company Name *"
-                    type="text"
-                    name="prevcompanyName"
-                    onChange={this.handleChange}
-                  />
+                  <div className="input-field">
+                    <input
+                      id="input_UserDetails1"
+                      type="text"
+                      class="form-control"
+                      placeholder="Previous Company Name *"
+                      type="text"
+                      name="prevcompanyName"
+                      onChange={this.handleChange}
+                    />
+                  </div>
                 </div>
                 <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Previous Designation *"
-                    name="prevdesignation"
-                    onChange={this.handleChange}
-                    pattern="[A-Za-z\\s]*"
-                    title="only alphabetical values are allowed"
-                  />
+                  <div className="input-field">
+                    <input
+                      type="text"
+                      id="input_UserDetails1"
+                      className="form-control"
+                      placeholder="Previous Designation *"
+                      name="prevdesignation"
+                      onChange={this.handleChange}
+                      pattern="[A-Za-z\\s]*"
+                      title="only alphabetical values are allowed"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
+            <br></br>
             {/*end section-5 */}
             <div className="profile-header-container" id="submission">
               <div className="ui checkbox">
@@ -904,35 +996,621 @@ class UserDetails extends Component {
                   <span>Terms and Conditions</span>
                 </label>
                 <p className="center red-text">{this.state.checkBoxerror}</p>
-                {/* <div className="createAccount2"> */}
-
-                {/* </div> */}
               </div>
 
-              <input
-                type="file"
-                class="inputfile center"
-                id="embedpollfileinput"
-                name="image"
-                accept="images.jpeg"
-                onChange={this.handleResume}
-              />
+              {/* <input
+                  type="file"
+                  class="inputfile center"
+                  id="embedpollfileinput"
+                  name="image"
+                  accept="images.jpeg"
+                  onChange={this.handleResume}
+                />
 
-              <label
-                for="embedpollfileinput"
-                className="ui huge white right floated button"
-                id="hugewhite"
-              >
-                <img src={file} id="fileimg" />
-                <span id="doc">Upload Resume</span>
-              </label>
-              <p>{this.state.docName}</p>
+                <label
+                  for="embedpollfileinput"
+                  className="ui huge white right floated button"
+                  id="hugewhite"
+                >
+                  <img src={file} id="fileimg" />
+                  <span id="doc">Upload Resume</span>
+                </label>
+                <p>{this.state.docName}</p> */}
+              <div className="text-center">
+                <div
+                  className="btn btn-default image-preview-input"
+                  id="btnheight"
+                  style={{ marginLeft: "-121px" }}
+                >
+                  <img src={file} id="fileimg" />
+                  <span className="image-preview-input-title">
+                    Update Resume
+                  </span>
+                  <input
+                    type="file"
+                    accept="image/png, image/jpeg, image/gif"
+                    name="input-file-preview"
+                    //  value={this.state.uploadResume}
+                    onChange={this.handleResume}
+                  />
+                </div>
+                <p>{this.state.docName}</p>
+              </div>
               <br></br>
-              {loading && loading ? (
+              {/* {loading && loading ? (
                 <button id="UserLoginButton" className="center">
                   {loading && <i className="fa fa-spinner fa-spin"></i>}
                 </button>
-              ) : (
+              ) : ( */}
+              <button
+                id="UserLoginButton"
+                className="center"
+                onClick={this.handleSubmit}
+              >
+                Submit
+              </button>
+              {/* )} */}
+            </div>
+          </div>
+        </div>
+        <div className="col s12 m10 l8 offset-m1 show-on-small hide-on-med-and-up">
+          <div className="forms z-depth-1">
+            <div class="note5">
+              <div class="profile-header-container">
+                <h4 class="title">Job Seeker</h4>
+
+                <div class="profile-header-img">
+                  <img
+                    class="img-circle"
+                    style={{}}
+                    //src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120"
+                    src={this.state.profileimagepath}
+                  />
+
+                  <div class="rank-label-container">
+                    {/* <i className="material-icons grey-text large" id="pro1">
+                    account_circlehide-on-small-only
+                  </i> */}
+                    <input
+                      type="file"
+                      name="image"
+                      class="image_src"
+                      accept="images.jpeg"
+                      onChange={this.handleImageChange}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="form-content6">
+              <div className="row" id="section-8">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        type="text"
+                        id="input_UserDetails"
+                        placeholder="Enter Full Name *"
+                        name="name"
+                        required
+                        onChange={this.handleChange}
+                        pattern="[A-Za-z\\s]*"
+                        title="only alphabetical values are allowed"
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        id="input_UserDetails1"
+                        type="text"
+                        className="form-control"
+                        placeholder="Enter Email *"
+                        type="email"
+                        name="email"
+                        required
+                        value={this.state.email}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        id="input_UserDetails"
+                        type="text"
+                        placeholder="Phone Number *"
+                        type="tel"
+                        name="mob"
+                        required
+                        value={mobileNumber}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        id="input_UserDetails1"
+                        type="text"
+                        className="form-control"
+                        placeholder="Pan Number *"
+                        type="text"
+                        name="panNum"
+                        required
+                        onChange={this.handleChange}
+                        pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"
+                        title="Enter valid pannumber"
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        id="input_UserDetails1"
+                        type="text"
+                        className="form-control"
+                        placeholder="Aadhar Card Number *"
+                        type="text"
+                        name="aadharNum"
+                        required
+                        onChange={this.handleChange}
+                        pattern="^\d{4}\d{4}\d{4}$"
+                        title="Addhar Card"
+                        title="4 digit space 4 digit space 4digit"
+                      />
+                    </div>
+                  </div>
+                  {/* <div className="form-group">
+                    <textarea
+                      type="text"
+                      //class="form-control"
+                      placeholder="Address *"
+                      onChange={this.handleChange5}
+                      id="textarea"
+                    ></textarea>
+                  </div> */}
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        id="input_UserDetails1"
+                        type="text"
+                        className="form-control"
+                        placeholder="Education Qualification *"
+                        type="text"
+                        name="eduQual"
+                        required
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <Popup
+                      contentStyle={{ height: "200px", width: "400px" }}
+                      trigger={
+                        <div
+                          className="form-group"
+                          id="printjobname"
+                          onChange={this.handleCheckLength}
+                        >
+                          <h6 id="valse">Applied For</h6>
+                          <i
+                            className="fa fa-sort-down"
+                            style={{
+                              fontSize: "30px",
+                              color: "#3fb2aa",
+                              float: "right",
+                              marginTop: "-34px",
+                            }}
+                          ></i>
+                        </div>
+                      }
+                    >
+                      <Multiselect
+                        options={this.state.Types}
+                        value={selectedValue}
+                        displayValue="name"
+                        onSelect={this.handleChange1Arg}
+                        id="demo"
+                      />
+                    </Popup>
+                    {/* <div id="displayselectedjob">
+                    {jobnamearray.join().substr(0, 50)}..
+                  </div> */}
+                  </div>
+                  <div className="form-group">
+                    <Form.Control
+                      as="select"
+                      onChange={this.handleChange2}
+                      id="update"
+                    >
+                      <option value="1">Get job opening updates</option>
+                      {this.state.Updates.map((jobUpdate) => (
+                        <option key={jobUpdate} value={jobUpdate}>
+                          {jobUpdate}
+                        </option>
+                      ))}
+                    </Form.Control>
+                  </div>
+                  <div className="form-group">
+                    <textarea
+                      type="text"
+                      //class="form-control"
+                      placeholder="Address *"
+                      onChange={this.handleChange5}
+                      id="textarea"
+                    ></textarea>
+                  </div>
+                  <div className="form-group" id="frmgrp">
+                    <p id="label">Are you fresher?</p>
+
+                    <p>
+                      <label>
+                        <input
+                          name="fresher"
+                          value="true"
+                          onClick={this.handleRadio}
+                          type="radio"
+                          id="ra"
+                          // value={fresher}
+                        />
+                        <span id="label">Yes</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input
+                          name="fresher"
+                          value="false"
+                          onClick={this.handleRadio}
+                          type="radio"
+                          id="ra"
+                          // value={fresher}
+                        />
+                        <span id="label">No</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+                <div className="col-md-6"></div>
+              </div>
+              {/* end section-1 */}
+              {/* start section-2 */}
+              <div className="row" id="section-9">
+                <div className="col-md-6">
+                  <div className="form-group" id="frmgrp">
+                    <p id="label">Currently working?</p>
+                    <p>
+                      <label>
+                        <input
+                          name="working"
+                          value="true"
+                          onClick={this.handleRadio1}
+                          type="radio"
+                        />
+                        <span id="label">Yes</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input
+                          name="working"
+                          value="false"
+                          onClick={this.handleRadio1}
+                          type="radio"
+                          // defaultValue={working}
+                        />
+                        <span id="label">No</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {/* end section-2 */}
+              {/* start section-3 if currently working yes*/}
+              <div className="row" id="section-10">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        type="text"
+                        id="input_UserDetails1"
+                        className="form-control"
+                        placeholder="Years of Experience *"
+                        name="experience"
+                        pattern="[0-9]*"
+                        title="It should be Numeric"
+                        onChange={this.handleChange}
+                        maxLength="2"
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        id="input_UserDetails1"
+                        type="text"
+                        className="form-control"
+                        placeholder="Previous Job Location *"
+                        name="prevjobLocation"
+                        onChange={this.handleChange}
+                        pattern="[A-Za-z\\s]*"
+                        title="only alphabetical values are allowed"
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        id="input_UserDetails1"
+                        type="text"
+                        className="form-control"
+                        placeholder="Current Location *"
+                        name="currentLocation"
+                        onChange={this.handleChange}
+                        pattern="[A-Za-z\\s]*"
+                        title="only alphabetical values are allowed"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        id="input_UserDetails1"
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Current Company Name *"
+                        name="companyName"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        type="text"
+                        id="input_UserDetails1"
+                        className="form-control"
+                        placeholder="Designation *"
+                        name="designation"
+                        onChange={this.handleChange}
+                        pattern="[A-Za-z\\s]*"
+                        title="only alphabetical values are allowed"
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group" id="frmgrp">
+                    <p id="label">Are you serving notice period?</p>
+                    <p>
+                      <label>
+                        <input
+                          name="noticePeriod"
+                          value="true"
+                          onClick={this.handleRadio2}
+                          type="radio"
+                          id="ra"
+                          // defaultValue={noticePeriod}
+                        />
+                        <span id="label">Yes</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input
+                          name="noticePeriod"
+                          value="false"
+                          onClick={this.handleRadio2}
+                          type="radio"
+                          id="ra"
+                          // defaultValue={noticePeriod}
+                        />
+                        <span id="label">No</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {/* end section-3 */}
+              {/* start section-4 if serving notice period */}
+              <div className="row" id="section-11">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        className="form-control"
+                        placeholder="Days *"
+                        type="number"
+                        name="noOfDays"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        id="input_UserDetails1"
+                        type="text"
+                        className="form-control"
+                        placeholder="UpTo *"
+                        type="number"
+                        name="upTo"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="form-group" id="frmgrp">
+                    <p id="label">Is it negotiable?</p>
+
+                    <p>
+                      <label>
+                        <input
+                          name="negotiable"
+                          value="true"
+                          onClick={this.handleRadio3}
+                          type="radio"
+                          id="ra"
+                          // defaultValue={negotiable}
+                        />
+                        <span id="label">Yes</span>
+                      </label>
+                    </p>
+                    <p>
+                      <label>
+                        <input
+                          name="negotiable"
+                          value="false"
+                          onClick={this.handleRadio3}
+                          type="radio"
+                          id="ra"
+                          // defaultValue={negotiable}
+                        />
+                        <span id="label">No</span>
+                      </label>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {/*end section-4 */}
+              {/*start section-5 */}
+              <div className="row" id="section-12">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        type="text"
+                        id="input_UserDetails1"
+                        className="form-control"
+                        placeholder="Years of Experience *"
+                        name="experience"
+                        pattern="[0-9]*"
+                        title="It should be Numeric"
+                        onChange={this.handleChange}
+                        maxLength="2"
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        id="input_UserDetails1"
+                        type="text"
+                        className="form-control"
+                        placeholder="Previous Job Location *"
+                        name="prevjobLocation"
+                        onChange={this.handleChange}
+                        pattern="[A-Za-z\\s]*"
+                        title="only alphabetical values are allowed"
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        id="input_UserDetails1"
+                        type="text"
+                        className="form-control"
+                        placeholder="Current Location *"
+                        name="currentLocation"
+                        onChange={this.handleChange}
+                        pattern="[A-Za-z\\s]*"
+                        title="only alphabetical values are allowed"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        id="input_UserDetails1"
+                        type="text"
+                        class="form-control"
+                        placeholder="Previous Company Name *"
+                        type="text"
+                        name="prevcompanyName"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <div className="input-field">
+                      <input
+                        type="text"
+                        id="input_UserDetails1"
+                        className="form-control"
+                        placeholder="Previous Designation *"
+                        name="prevdesignation"
+                        onChange={this.handleChange}
+                        pattern="[A-Za-z\\s]*"
+                        title="only alphabetical values are allowed"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/*end section-5 */}
+              <div className="profile-header-container" id="submission">
+                <div className="ui checkbox">
+                  <label>
+                    <input
+                      name="check"
+                      value="false"
+                      onClick={this.handleCheck}
+                      type="checkbox"
+                    />
+                    <span>Terms and Conditions</span>
+                  </label>
+                  <p className="center red-text">{this.state.checkBoxerror}</p>
+                </div>
+
+                {/* <input
+                  type="file"
+                  class="inputfile center"
+                  id="embedpollfileinput"
+                  name="image"
+                  accept="images.jpeg"
+                  onChange={this.handleResume}
+                />
+
+                <label
+                  for="embedpollfileinput"
+                  className="ui huge white right floated button"
+                  id="hugewhite"
+                >
+                  <img src={file} id="fileimg" />
+                  <span id="doc">Upload Resume</span>
+                </label>
+                <p>{this.state.docName}</p> */}
+                <div className="text-center">
+                  <div
+                    className="btn btn-default image-preview-input"
+                    id="btnheight"
+                    style={{ marginLeft: "-121px" }}
+                  >
+                    <img src={file} id="fileimg" />
+                    <span className="image-preview-input-title">
+                      Upload Resume
+                    </span>
+                    <input
+                      type="file"
+                      accept="image/png, image/jpeg, image/gif"
+                      name="input-file-preview"
+                      //  value={this.state.uploadResume}
+                      onChange={this.handleResume}
+                    />
+                  </div>
+                  <h5 class="center-align">{this.state.docName}</h5>
+                  {/* <p>{this.state.docName}</p> */}
+                </div>
+                <br></br>
+                {/* {loading && loading ? (
+                  <button id="UserLoginButton" className="center">
+                    {loading && <i className="fa fa-spinner fa-spin"></i>}
+                  </button>
+                ) : ( */}
                 <button
                   id="UserLoginButton"
                   className="center"
@@ -940,7 +1618,53 @@ class UserDetails extends Component {
                 >
                   Submit
                 </button>
-              )}
+                {/* )} */}
+              </div>
+              {/* <input
+                type="file"
+                className="inputfile"
+                id="embedpollfileinputs"
+                name="resume "
+                accept="images.jpeg"
+                onChange={this.handleResume}
+              />
+              <label
+                htmlFor="embedpollfileinputs"
+                className="ui huge white center floated button"
+                id="white"
+              >
+                <img src={file} id="fileimg" />
+                <span id="doc">Upload Resume</span>
+              </label> */}
+              {/* </div> */}
+              {/* <div className="profile-header-container" id="submission"> */}
+              {/* <center>
+               
+                <input
+                  name="check"
+                  onClick={this.handleCheck}
+                  type="checkbox"
+                  value=""
+                />
+                <span>Terms and Conditions</span> */}
+
+              {/* <p className="center red-text">{this.state.checkBoxerror}</p> */}
+              {/* </center> */}
+              {/* </div> */}
+              {/* </div> */}
+              {/* start section-6 */}
+              {/* <div className="row" id="section-6">
+                <div className="col-md-6">
+                  <button type="button" onClick={this.handleCancel} id="cancel">
+                    Cancel
+                  </button>
+                </div>
+                <div className="col-md-6">
+                  <button type="button" onClick={this.handleSubmit} id="save">
+                    Save
+                  </button>
+                </div>
+              </div> */}
             </div>
           </div>
         </div>

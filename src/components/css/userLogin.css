@@ -8,7 +8,7 @@
    background-position: 100% 100%;
 } */
 #main1 {
-  width: 390px;
+  width: 444px;
   height: 480px;
   background: white;
   border-radius: 10px;
@@ -16,7 +16,6 @@
   box-shadow: 0 20px 50px rgba(230, 219, 219, 0.733);
   margin-left: 0px;
 }
-
 #forgot {
   cursor: pointer;
   color: lightseagreen;
@@ -27,7 +26,6 @@
 }
 #body {
   position: relative;
-  margin-top: 190px;
 }
 #main1 {
   position: absolute;
@@ -115,8 +113,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 390px;
-  height: 350px;
+  width: 426px;
+  height: 370px;
   background: white;
   border-radius: 10px;
   margin-top: 100px;
@@ -125,7 +123,7 @@
 
 #UserLoginButton {
   width: 291px;
-  margin-top: 17px;
+  margin-top: 12px;
   outline: none;
   border: none;
 }
@@ -148,7 +146,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
   box-shadow: none;
 }
 #userLogin1 {
-  width: 100%;
+  width: 85%;
   display: flex;
   flex-wrap: wrap;
   margin-top: 14px;
@@ -183,9 +181,8 @@ i.right {
   }
   #UserLoginButton {
     width: 288px;
-    margin-top: -29px;
-    outline: none;
     border: none;
+    margin-top: -16px;
   }
   #center {
     margin-left: -23px;

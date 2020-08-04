@@ -220,12 +220,15 @@ class UserLogin extends Component {
                   </i>
                 )}
               </div>
+              <br></br>
+              <br></br>
               <strong className="center red-text">{this.state.error}</strong>
+
               <br></br>
               {loading && loading ? (
                 <button id="UserLoginButton">
                   {loading && <i className="fa fa-spinner fa-spin"></i>}
-                  Logging in...
+                  Logging In...
                 </button>
               ) : (
                 <button id="UserLoginButton">Login</button>

@@ -45,6 +45,7 @@ class App extends Component {
         <div className="App" id="root">
           <Switch>
             <Route exact path="/" component={SendOtp} />
+            <Route exact path="/doc" component={NavbarTop} />
             <Route exact path="/verify" component={Verify} />
             <Route exact path="/userLogin" component={UserLogin} />
             <Route exact path="/forgotPwd" component={ForgetPwd} />

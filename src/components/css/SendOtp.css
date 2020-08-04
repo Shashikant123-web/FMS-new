@@ -149,7 +149,7 @@ html {
 }
 .logo {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .inputIcon {
   /* position: relative; */
@@ -204,7 +204,7 @@ button:enabled {
   width: 40%;
 }
 #countries {
-  width: 26%;
+  width: 23%;
   margin-left: -205px;
   position: relative;
   top: -52px;
@@ -267,8 +267,7 @@ button:enabled {
   body #main1,
   #main2,
   #main {
-    width: 340px;
-    margin-left: 10px;
-    height: 45px;
+    width: 324px;
+    margin-left: 35px;
   }
 }

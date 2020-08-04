@@ -115,24 +115,6 @@ export class RecomendedJobs extends Component {
       this.props.handleSave(this.state);
     }, 50);
   };
-  // handleUnsave = (id) => {
-  //   this.setState({
-  //     id,
-  //   });
-  //   const time2 = setTimeout(() => {
-  //     this.props.handleUnsave(this.state);
-  //   }, 50);
-
-  //   axios
-  //     .post("/stskFmsApi/jobseeker/unSaveJobs/18/51", {
-  //       headers: header,
-  //     })
-  //     .then((res) => {
-  //       console.log(res.data.data);
-  //       console.log(res.data);
-  //       console.log(res);
-  //     });
-  // };
 
   handleApply = (id) => {
     this.setState({
@@ -148,42 +130,6 @@ export class RecomendedJobs extends Component {
     var popup = document.getElementById("popupopen");
     popup.classList.toggle("show");
   }
-  handleSave = (id) => {
-    axios
-      .post(
-        "/stskFmsApi/jobseeker/saveJobs",
-        {
-          id: this.state.userId,
-          jobs: [
-            {
-              id: id,
-            },
-          ],
-        },
-        { headers }
-      )
-      .then((res) => {
-        console.log(res.data);
-        console.log(res);
-      });
-
-    // {
-    //   this.state.saved.map((savedId) => {
-    //     var flag = document.getElementById(id).innerHTML;
-
-    //     if (flag === "turned_in_not" && id == savedId) {
-    //       var a = (document.getElementById(id).innerHTML = "turned_in");
-    //       flag = 1;
-    //     } else {
-    //       var a = (document.getElementById(id).innerHTML = "turned_in_not");
-    //     }
-    //   });
-    // }
-    //   console.log(id);
-    //   this.setState({
-    //     saved: [...this.state.saved, id],
-    //   });
-  };
   handleUnsave = (id) => {
     // this.setState({
     //   id,
@@ -402,6 +348,7 @@ export class RecomendedJobs extends Component {
                             <strong>Description-</strong>
                             <p className="grey-text">{job.description}</p>
                           </div>
+
                           <div className="col s12 m4 l4">
                             <br className="hide-on-small-only"></br>
                             <strong className="black-text">
@@ -468,7 +415,7 @@ export class RecomendedJobs extends Component {
                         </div>
 
                         <div className="center" id="saveandapply">
-                          {/* {job.isSaved ? (
+                          {job.isSaved ? (
                             <a
                               className="btn center"
                               id="savebtn"
@@ -488,7 +435,7 @@ export class RecomendedJobs extends Component {
                               </i>
                               save
                             </a>
-                          )} */}
+                          )}
                           {job.isApplied ? (
                             <a className="btn center" id="applybtn">
                               Applied
@@ -520,7 +467,7 @@ export class RecomendedJobs extends Component {
                 <div className="card-action">
                   <strong className="left">{job.createdAt}</strong>
                   <div className="right">
-                    {/* {job.isSaved ? (
+                    {job.isSaved ? (
                       <strong
                         className="right"
                         onClick={() => this.handleUnsave(job.id)}
@@ -533,8 +480,7 @@ export class RecomendedJobs extends Component {
                         </i>
                         saved
                       </strong>
-                    ) : null} */}
-                    {job.isSaved ? null : (
+                    ) : (
                       <strong
                         className="right"
                         onClick={() => this.handleSave(job.id)}
@@ -575,6 +521,17 @@ export class RecomendedJobs extends Component {
     ) : (
       <div>
         Loading please wait...
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
         <br></br>
         <br></br>
         <br></br>

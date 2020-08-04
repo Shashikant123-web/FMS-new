@@ -19,5 +19,6 @@ export const HANDLE_APPLIED_JOBS = "HANDLE_APPLIED_JOBS";
 export const SEARCHED_JOBS = "SEARCHED_JOBS";
 
 export const TOKEN = "TOKEN";
+export const PROFILE_PATH = "PROFILE_PATH";
 
 export const DASUSERLOGIN = "DASHBOARD";

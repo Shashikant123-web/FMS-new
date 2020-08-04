@@ -523,6 +523,15 @@ export class SearchedJobs extends Component {
           <br></br>
           <br></br>
           <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
         </div>
       );
 
